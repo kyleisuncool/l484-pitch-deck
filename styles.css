@@ -1,5 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/techbit');
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
 
 /* ============================================================
    TOKEN LAYER — ArcTec / Labs 484 Design System
@@ -41,8 +41,8 @@
 
   /* Fonts */
   --font-display: 'Techbit', 'Courier New', monospace;
-  --font-sans:    'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-mono:    'Space Mono', ui-monospace, monospace;
+  --font-sans:    'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
 
   /* Type scale — 1920×1080 canvas */
   --t-display: 88px;
