@@ -1,5 +1,4 @@
 // nav2d.js — 2D grid navigation for deck-stage
-// Intercepts keyboard in capture phase (before deck-stage sees it).
 //
 // Slide authoring: add data-row and data-col to each <section>.
 //   data-row = which main slide (0-indexed)
@@ -18,17 +17,27 @@
 
   const HASH_RE = /^#(\d+)(?:-(\d+))?$/;
 
+  // SVG chevrons — 20×20, stroke-only, matching present.l484.com style
+  const SVG = {
+    up:    '<polyline points="18 15 12 9 6 15"></polyline>',
+    down:  '<polyline points="6 9 12 15 18 9"></polyline>',
+    left:  '<polyline points="15 18 9 12 15 6"></polyline>',
+    right: '<polyline points="9 18 15 12 9 6"></polyline>',
+  };
+
+  function chevron(dir) {
+    return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${SVG[dir]}</svg>`;
+  }
+
   function init() {
     const stage = document.querySelector('deck-stage');
     if (!stage) return;
 
-    // Build grid: array of rows, each row is array of {slide, linearIdx}
     function buildGrid() {
       const slides = Array.from(stage.children).filter(el => {
         const t = el.tagName;
         return t !== 'TEMPLATE' && t !== 'SCRIPT' && t !== 'STYLE';
       });
-
       const rowMap = new Map();
       slides.forEach((slide, i) => {
         const row = parseInt(slide.getAttribute('data-row') ?? String(i), 10);
@@ -36,7 +45,6 @@
         if (!rowMap.has(row)) rowMap.set(row, new Map());
         rowMap.get(row).set(col, { slide, linearIdx: i });
       });
-
       const grid = [];
       Array.from(rowMap.keys()).sort((a, b) => a - b).forEach(r => {
         const colMap = rowMap.get(r);
@@ -50,6 +58,126 @@
     let row = 0;
     let col = 0;
 
+    // ── Nav button panel ────────────────────────────────────────────────
+    // Mirrors present.l484.com: fixed bottom-right, flex-col, glass buttons
+    const panel = document.createElement('div');
+    panel.id = 'nav2d-panel';
+    panel.style.cssText = [
+      'position:fixed',
+      'bottom:32px',
+      'right:32px',
+      'display:flex',
+      'flex-direction:column',
+      'gap:12px',
+      'z-index:2147482000',
+      'isolation:isolate',
+    ].join(';');
+
+    const BTN_BASE = [
+      'width:48px',
+      'height:48px',
+      'border-radius:12px',
+      'background:rgba(255,255,255,0.10)',
+      'backdrop-filter:blur(20px)',
+      '-webkit-backdrop-filter:blur(20px)',
+      'border:1px solid rgba(255,255,255,0.20)',
+      'color:#fff',
+      'display:flex',
+      'align-items:center',
+      'justify-content:center',
+      'cursor:pointer',
+      'transition:background 0.3s,border-color 0.3s,transform 0.2s,box-shadow 0.3s,opacity 0.3s',
+      'box-shadow:0 4px 12px rgba(0,0,0,0.20)',
+      'padding:0',
+      'outline:none',
+    ].join(';');
+
+    function makeBtn(dir, label) {
+      const btn = document.createElement('button');
+      btn.setAttribute('aria-label', label);
+      btn.style.cssText = BTN_BASE;
+      btn.innerHTML = chevron(dir);
+
+      btn.addEventListener('mouseenter', () => {
+        if (!btn.disabled) {
+          btn.style.background = 'rgba(255,255,255,0.20)';
+          btn.style.borderColor = 'rgba(255,255,255,0.40)';
+          btn.style.transform = 'scale(1.05)';
+          btn.style.boxShadow = '0 6px 20px rgba(0,0,0,0.25)';
+        }
+      });
+      btn.addEventListener('mouseleave', () => {
+        if (!btn.disabled) {
+          btn.style.background = btn._baseBg || 'rgba(255,255,255,0.10)';
+          btn.style.borderColor = btn._baseBorder || 'rgba(255,255,255,0.20)';
+          btn.style.transform = '';
+          btn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.20)';
+        }
+      });
+      btn.addEventListener('mousedown', () => { if (!btn.disabled) btn.style.transform = 'scale(0.95)'; });
+      btn.addEventListener('mouseup',   () => { if (!btn.disabled) btn.style.transform = 'scale(1.05)'; });
+      return btn;
+    }
+
+    const btnUp    = makeBtn('up',    'Previous slide');
+    const btnRight = makeBtn('right', 'Open leave-behind');
+    const btnLeft  = makeBtn('left',  'Back to main');
+    const btnDown  = makeBtn('down',  'Next slide');
+
+    btnUp.addEventListener('click',    () => goTo(row - 1, 0));
+    btnRight.addEventListener('click', () => goTo(row, col + 1));
+    btnLeft.addEventListener('click',  () => goTo(row, col - 1));
+    btnDown.addEventListener('click',  () => goTo(row + 1, 0));
+
+    panel.appendChild(btnUp);
+    panel.appendChild(btnRight);
+    panel.appendChild(btnLeft);
+    panel.appendChild(btnDown);
+    document.body.appendChild(panel);
+
+    // ── State → button appearance ────────────────────────────────────────
+    function updateButtons() {
+      const rowCols = grid[row] || [];
+      const canUp    = row > 0;
+      const canDown  = row < grid.length - 1;
+      const canRight = col < rowCols.length - 1;
+      const canLeft  = col > 0;
+
+      setBtn(btnUp,    canUp);
+      setBtn(btnDown,  canDown);
+      setBtn(btnLeft,  canLeft);
+      // Right gets cyan tint when a leave-behind is available
+      setBtn(btnRight, canRight, canRight);
+    }
+
+    function setBtn(btn, enabled, cyanTint) {
+      btn.disabled = !enabled;
+      if (!enabled) {
+        btn.style.opacity = '0.30';
+        btn.style.cursor = 'default';
+        btn.style.transform = '';
+        btn._baseBg     = 'rgba(255,255,255,0.10)';
+        btn._baseBorder = 'rgba(255,255,255,0.20)';
+        btn.style.background   = btn._baseBg;
+        btn.style.borderColor  = btn._baseBorder;
+      } else if (cyanTint) {
+        btn.style.opacity = '1';
+        btn.style.cursor = 'pointer';
+        btn._baseBg     = 'rgba(0,207,255,0.14)';
+        btn._baseBorder = 'rgba(0,207,255,0.35)';
+        btn.style.background  = btn._baseBg;
+        btn.style.borderColor = btn._baseBorder;
+      } else {
+        btn.style.opacity = '1';
+        btn.style.cursor = 'pointer';
+        btn._baseBg     = 'rgba(255,255,255,0.10)';
+        btn._baseBorder = 'rgba(255,255,255,0.20)';
+        btn.style.background  = btn._baseBg;
+        btn.style.borderColor = btn._baseBorder;
+      }
+    }
+
+    // ── Navigation ───────────────────────────────────────────────────────
     function goTo(r, c) {
       r = Math.max(0, Math.min(grid.length - 1, r));
       const rowCols = grid[r] || [];
@@ -62,46 +190,16 @@
 
       try { history.replaceState(null, '', '#' + r + (c > 0 ? '-' + c : '')); } catch (_) {}
 
-      // Overwrite deck-stage's linear count with row-based count
       requestAnimationFrame(() => {
         const sr = stage.shadowRoot;
-        if (!sr) return;
-        const cur = sr.querySelector('.count .current');
-        const tot = sr.querySelector('.count .total');
-        if (cur) cur.textContent = String(row + 1);
-        if (tot) tot.textContent = String(grid.length);
-        updateHints();
+        if (sr) {
+          const cur = sr.querySelector('.count .current');
+          const tot = sr.querySelector('.count .total');
+          if (cur) cur.textContent = String(row + 1);
+          if (tot) tot.textContent = String(grid.length);
+        }
+        updateButtons();
       });
-    }
-
-    // Direction hint chevrons — positioned at left/right center edges
-    const hintsEl = document.createElement('div');
-    hintsEl.id = 'nav2d-hints';
-    hintsEl.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:2147482000;';
-    document.body.appendChild(hintsEl);
-
-    function updateHints() {
-      const hasRight = col < (grid[row] || []).length - 1;
-      const hasLeft = col > 0;
-
-      const chevronStyle = [
-        'position:absolute',
-        'top:50%',
-        'transform:translateY(-50%)',
-        'font-size:32px',
-        'line-height:1',
-        'color:rgba(0,207,255,0.45)',
-        'font-family:system-ui,sans-serif',
-        'font-weight:300',
-        'letter-spacing:-2px',
-        'transition:opacity 0.3s',
-        'padding:12px 8px',
-      ].join(';');
-
-      hintsEl.innerHTML = [
-        hasRight ? `<div style="${chevronStyle};right:16px;" title="Detail (→)">›</div>` : '',
-        hasLeft  ? `<div style="${chevronStyle};left:16px;"  title="Back (←)">‹</div>` : '',
-      ].join('');
     }
 
     // Restore from hash
@@ -109,10 +207,10 @@
     if (m) {
       goTo(parseInt(m[1], 10), m[2] ? parseInt(m[2], 10) : 0);
     } else {
-      updateHints();
+      updateButtons();
     }
 
-    // Keyboard: capture phase runs before deck-stage's bubble-phase handler
+    // Keyboard: capture phase runs before deck-stage's bubble handler
     window.addEventListener('keydown', (e) => {
       const t = e.target;
       if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
@@ -138,10 +236,9 @@
         e.stopImmediatePropagation();
         e.preventDefault();
       }
-    }, true); // capture = true → runs before deck-stage's bubble handler
+    }, true);
   }
 
-  // Wait for deck-stage custom element to be defined
   if (typeof customElements !== 'undefined') {
     customElements.whenDefined('deck-stage').then(init);
   } else {
