@@ -3,36 +3,782 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
-<title>Labs 484: Investor Pitch Deck</title>
+<title>Labs 484 × ArcTec — Investor Pitch Deck</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<script>
-(function(){
-  var touch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  if (touch && window.innerWidth > 767) {
-    document.documentElement.classList.add('is-touch-landscape');
-    document.addEventListener('DOMContentLoaded', function(){
-      var s = document.querySelector('deck-stage');
-      if (s) s.setAttribute('no-rail', '');
-    });
-  }
-}());
-</script>
 <div id="m-counter"></div>
 <button id="rail-toggle" aria-label="Toggle slide panel" title="Toggle slide panel">&#9776;</button>
-<deck-stage width="1920" height="1080">
+<deck-stage width="1920" height="1080" no-rail>
 
-  <!-- 01 — COVER -->
-  <section class="s night" data-label="Cover">
-    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;">
-      <h1 class="anim d1" style="font-family:var(--font-display);font-weight:500;font-size:var(--t-title);line-height:1.0;color:var(--paper-50);margin:0 0 24px;">Labs 484</h1>
-      <p class="lead anim d2" style="font-size:var(--t-lead);color:var(--text-muted);margin:0;max-width:40ch;">Investor Pitch Deck</p>
-      <footer class="foot"><div class="foot__b"><span class="foot__w">L484</span></div><span class="foot__n">Cover · 01</span></footer>
+  <!-- ═══════════════════════════════════════════════════════════
+       ROW 0 — COVER
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- 0·0 — COVER (main) -->
+  <section class="s arctic" data-row="0" data-col="0" data-label="Cover">
+    <img src="assets/render-interior-night.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.35;" />
+    <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,8,15,0.55) 0%,rgba(5,8,15,0.20) 35%,rgba(5,8,15,0.70) 75%,rgba(5,8,15,0.92) 100%);"></div>
+    <div class="frame" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:32px;z-index:2;">
+      <img src="assets/logo-arctic.jpg" alt="The Arctic" class="anim" style="height:260px;width:auto;object-fit:contain;border-radius:12px;" />
+      <div class="anim d1">
+        <div class="display" style="font-size:56px;letter-spacing:0.06em;">THE ARCTIC</div>
+        <div class="lead" style="margin-top:12px;color:var(--text-muted);">ArcTec Center &nbsp;·&nbsp; Austin, Texas</div>
+      </div>
+      <div class="anim d2">
+        <div class="pill cyan"><span class="dot"></span>Labs 484 × ArcTec — Investor Presentation</div>
+      </div>
+      <p class="anim d3" style="font-family:var(--font-sans);font-size:22px;font-weight:300;font-style:italic;color:var(--text-muted);max-width:50ch;margin:0;">Building a future worth inheriting.</p>
     </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Cover · 01</span>
+    </footer>
+  </section>
+
+  <!-- 0·1 — COVER detail: About ArcTec -->
+  <section class="s detail" data-row="0" data-col="1" data-label="About ArcTec">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:40px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">About ArcTec Center</div>
+        <div class="h2">What is The Arctic?</div>
+      </div>
+      <div class="grid-2 anim d1" style="gap:32px;align-items:start;">
+        <div>
+          <p class="lead" style="margin-bottom:24px;">ArcTec Center (formerly Sapien Center) is a sovereign tech campus in East Austin — a physical infrastructure layer for the open source builder community.</p>
+          <p class="lead" style="color:var(--text-muted);">"The Arctic" is both a place and a metaphor: the frontier, the edge of the map, where the next civilization is being built before the current one knows it's happening.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Location</div>
+            <div style="font-size:22px;font-weight:500;color:var(--text-primary);">East Austin, Texas</div>
+            <div style="font-size:18px;color:var(--text-muted);margin-top:4px;">4 locations across Austin</div>
+          </div>
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Campus Program</div>
+            <div style="font-size:18px;color:var(--text-body);line-height:1.7;">ArcTec Center · Noderunners Store<br>Radius Grocery · Kitchen 484<br>Data Center · Tiny Homes · Coffee Shop</div>
+          </div>
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Operated by</div>
+            <div style="font-size:22px;font-weight:500;color:var(--text-primary);">Labs 484</div>
+            <div style="font-size:18px;color:var(--text-muted);margin-top:4px;">Open source R&amp;D nonprofit · Austin, TX</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">About · 01–</span>
+    </footer>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ROW 1 — WHERE BUILDERS GET RESOURCED
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- 1·0 — Builders (main) -->
+  <section class="s arctic" data-row="1" data-col="0" data-label="Where Builders Get Resourced">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:48px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">The Problem</div>
+        <div class="h1" style="max-width:20ch;">Where builders<br>get <span class="aurora">resourced</span>.</div>
+      </div>
+      <p class="lead anim d1" style="max-width:52ch;">The builders of tomorrow require deep work environments suited to both focused development and genuine community. They need to transition fluidly from work to play to social — and most places can't support that.</p>
+      <div class="grid-3 anim d2" style="margin-top:8px;">
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Developer Lifecycle</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Build. Ship. Move. Repeat.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Developers cycle through locations — a few months here, a few months there. Each move is a disruption without the right infrastructure.</div>
+        </div>
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Deep Work Spaces</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Distraction-free by design.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Coworking with local AI compute, high-speed infrastructure, and community context baked in — not bolted on.</div>
+        </div>
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Tools for the Trade</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Sovereignty out of the box.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Node runner hardware, AI rigs, mesh network gear — available at the space, not shipped from Amazon and guessed at.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Where Builders Get Resourced · 02</span>
+    </footer>
+  </section>
+
+  <!-- 1·1 — Builders detail -->
+  <section class="s detail" data-row="1" data-col="1" data-label="Developer Ecosystem">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:36px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">Deeper Read</div>
+        <div class="h2">The developer ecosystem gap.</div>
+      </div>
+      <div class="grid-2 anim d1" style="gap:32px;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">The Pattern</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Open source developers are nomadic by necessity — they follow projects, not places. This creates a constant cost: rebuilding community, finding workspaces, sourcing tools, and re-establishing context every few months.</p>
+          </div>
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">The Deep Work Problem</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Cafés don't cut it. Remote work dilutes community. Corporate offices enforce hierarchy. ArcTec is built for the third option: a permanent deep work hub that developers can call home across visits.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass crest" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">What ArcTec Provides</div>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px;">
+              <div style="font-size:19px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">→</span> Coworking with local AI compute</div>
+              <div style="font-size:19px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">→</span> On-site noderunner hardware store</div>
+              <div style="font-size:19px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">→</span> Organic food + kitchen on site</div>
+              <div style="font-size:19px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">→</span> Lodging infrastructure (tiny homes)</div>
+              <div style="font-size:19px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">→</span> 20 community events per month</div>
+              <div style="font-size:19px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">→</span> Private member association network</div>
+            </div>
+          </div>
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">The Thesis</div>
+            <p style="font-size:20px;font-style:italic;color:var(--text-body);line-height:1.6;margin:0;">"The internet can't be fixed with a website or an app. It needs an entire new refactoring — and the people doing that need a place to do it from."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Developer Ecosystem · 02–</span>
+    </footer>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ROW 2 — OPEN SOURCE DEV CENTER
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- 2·0 — OSS Dev Center (main) -->
+  <section class="s arctic" data-row="2" data-col="0" data-label="Open Source Dev Center">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:48px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">The Space</div>
+        <div class="h1">Open source software<br>development center.</div>
+      </div>
+      <p class="lead anim d1" style="max-width:56ch;">Open source ecosystems have unique problems. Startups are typically underfunded. Developers face housing instability, resource gaps, and a missing sense of home. ArcTec solves the stack below the code.</p>
+      <div class="grid-3 anim d2">
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Developer Accommodations</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Lodging for builders.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Tiny homes on campus. Crash without disrupting your project cadence or losing your community context.</div>
+        </div>
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Living Needs</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Everything in one place.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Clean food, a kitchen, a grocery, a coffee shop — daily needs handled on-site so developers can stay in flow.</div>
+        </div>
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Developer Communities</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">People who speak your language.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Sovereign tech builders, Bitcoin node runners, AI researchers — a self-selecting community with high signal and low noise.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Open Source Dev Center · 03</span>
+    </footer>
+  </section>
+
+  <!-- 2·1 — OSS Dev Center detail -->
+  <section class="s detail" data-row="2" data-col="1" data-label="OSS Ecosystem Detail">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:36px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">Deeper Read</div>
+        <div class="h2">Why the physical layer matters.</div>
+      </div>
+      <div class="grid-2 anim d1" style="gap:32px;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">The Underfunding Problem</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Most open source projects run on volunteer time and thin grants. The people building them can't afford the infrastructure that would let them build faster. ArcTec subsidizes that cost through membership, not VC funding.</p>
+          </div>
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">The Housing Gap</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Austin is expensive. Developers new to the city, or cycling through on a project sprint, need short-term housing that doesn't require a 12-month lease. The tiny home cluster at ArcTec fills that gap directly.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">The Emotional Infrastructure</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Developers who miss community burn out. The mental health toll of nomadic tech work is real and underdiscussed. ArcTec provides the social and emotional scaffolding that keeps builders in the game long-term.</p>
+          </div>
+          <div class="glass crest" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:12px;">The Stack ArcTec Covers</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="font-size:18px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">✓</span> Housing (tiny homes on campus)</div>
+              <div style="font-size:18px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">✓</span> Food (grocery + kitchen)</div>
+              <div style="font-size:18px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">✓</span> Hardware (noderunner store)</div>
+              <div style="font-size:18px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">✓</span> Community (20 events/month)</div>
+              <div style="font-size:18px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">✓</span> Identity (PMA membership)</div>
+              <div style="font-size:18px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">✓</span> Research lab (Lab 484)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">OSS Ecosystem · 03–</span>
+    </footer>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ROW 3 — THE ARCTEC CIRCLE
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- 3·0 — ArcTec Circle (main) -->
+  <section class="s arctic" data-row="3" data-col="0" data-label="The ArcTec Circle">
+    <img src="assets/render-garden-night.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.25;" />
+    <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,12,24,0.75) 0%,rgba(8,12,24,0.45) 40%,rgba(8,12,24,0.80) 100%);"></div>
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:48px;z-index:2;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">Community</div>
+        <div class="h1">The ArcTec <span class="aurora">Circle</span>.</div>
+      </div>
+      <p class="lead anim d1" style="max-width:54ch;">The community of the future — an open source collective run through decentralized governance, giving every member equal access to manifesting their mission.</p>
+      <div class="grid-3 anim d2">
+        <div class="glass" style="padding:32px;">
+          <div class="stat-sm" style="margin-bottom:8px;">20</div>
+          <div class="label" style="margin-bottom:10px;">Events per Month</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Educational, social, and technical events creating a high-signal network of sovereign tech builders.</div>
+        </div>
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Private Member Association</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Sovereignty-first structure.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">A PMA centered on producing open source sovereign technology. Members own their access, their data, and their contributions.</div>
+        </div>
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">The Value of the Network</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Who they know + what they build.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Members contribute talent across multiple simultaneous projects. The network compounds with every new builder who joins.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot" style="z-index:2;">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">The ArcTec Circle · 04</span>
+    </footer>
+  </section>
+
+  <!-- 3·1 — ArcTec Circle detail -->
+  <section class="s detail" data-row="3" data-col="1" data-label="Circle Detail">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:36px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">Deeper Read</div>
+        <div class="h2">How the Circle operates.</div>
+      </div>
+      <div class="grid-2 anim d1" style="gap:32px;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Governance</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Decentralized governance means no single person owns the outcome. Decisions about the space, events, and direction are made collectively. Members vote with their time and resources, not just their membership fee.</p>
+          </div>
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Event Architecture</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">20 events per month spans educational workshops, technical deep-dives, social events, and open build nights. The cadence is designed to keep the space active and the network tight without burning anyone out.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">PMA Structure</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">A Private Member Association gives the community legal standing as a sovereign entity. Members access the space, tools, food, lodging, and network through their membership — not through a third-party platform that can deplatform them.</p>
+          </div>
+          <div class="glass crest" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:12px;">Network Compounding</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">The value of the ArcTec network is not just in who attends events. It's in what those people are building simultaneously — 14 active startups sharing talent, code, hardware, and insight across a single community layer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Circle Detail · 04–</span>
+    </footer>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ROW 4 — LAB 484
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- 4·0 — Lab 484 (main) -->
+  <section class="s arctic" data-row="4" data-col="0" data-label="Lab 484">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:48px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">The Organization</div>
+        <div class="h1">Lab <span class="aurora">484</span>.</div>
+      </div>
+      <p class="lead anim d1" style="max-width:58ch;">A research &amp; development nonprofit that facilitates spaces for developers to build — running 14 startups across 4 Austin locations simultaneously, giving birth to a new internet with no single point of failure.</p>
+      <div class="grid-3 anim d2">
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Business Model</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Support early. Scale together.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Labs 484 provides what early-stage startups need most — space, tools, community, and coordination — without taking equity.</div>
+        </div>
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Current Projects</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;"><span class="aurora">14 active startups.</span></div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Flagship: Archipelago — a simplified Bitcoin node system for digital sovereignty. Plus AI, mesh networking, and Web5 infrastructure projects.</div>
+        </div>
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Memberships</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Access the whole stack.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Members purchase access to space, amenities, network, tools, food, lodging, and creature comforts — everything needed to build without friction.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Lab 484 · 05</span>
+    </footer>
+  </section>
+
+  <!-- 4·1 — Lab 484 detail -->
+  <section class="s detail" data-row="4" data-col="1" data-label="Lab 484 Detail">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:36px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">Deeper Read</div>
+        <div class="h2">The new internet thesis.</div>
+      </div>
+      <div class="grid-2 anim d1" style="gap:32px;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Why a Nonprofit</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Labs 484 is a nonprofit because the mission is infrastructure, not profit. The goal is to accelerate the production of open source sovereign tech by removing the friction that typically kills early-stage projects before they ship.</p>
+          </div>
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">4 Austin Locations</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">The multi-location footprint across Austin means builders can move between spaces and communities without losing their Labs 484 context. Each location serves a different function in the overall network.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass crest" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:12px;">Flagship: Archipelago</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Archipelago is a Labs 484 venture — a simplified Bitcoin node and mesh network system designed to make digital sovereignty accessible to everyone, not just developers. Founded by Tasedon (Poly Nakamoto). Built by the ArcTec team.</p>
+          </div>
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Membership Model</div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+              <div style="font-size:18px;color:var(--text-body);">Tiered access: space · tools · food · lodging · network</div>
+              <div style="font-size:18px;color:var(--text-body);">PMA structure protects member sovereignty</div>
+              <div style="font-size:18px;color:var(--text-body);">Revenue model: low-cost, high-impact, designed to grow</div>
+              <div style="font-size:18px;color:var(--text-muted);font-style:italic;margin-top:4px;">Full membership tier detail forthcoming.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Lab 484 Detail · 05–</span>
+    </footer>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ROW 5 — NODERUNNERS STORE
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- 5·0 — Noderunners Store (main) -->
+  <section class="s arctic" data-row="5" data-col="0" data-label="Noderunners Store">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:48px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">Revenue Stream 1</div>
+        <div class="h1">Noderunners <span class="aurora">Store</span>.</div>
+      </div>
+      <p class="lead anim d1" style="max-width:56ch;">Everything you need to become a fully equipped node runner and achieve digital sovereignty — located at ArcTec Center, available to members and the public.</p>
+      <div class="grid-3 anim d2">
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Node Hardware</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Bitcoin nodes. Start9. Umbrel.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Pre-configured and ready-to-run hardware for anyone who wants to leave trusted third parties behind. No guesswork.</div>
+        </div>
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">AI Hardware</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Local AI. Your data. Your rules.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">GPU rigs and AI edge devices for running models locally — no cloud, no surveillance, complete control of your inference stack.</div>
+        </div>
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Mesh Networks</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Unstoppable communication.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Meshtastic devices, antennas, and accessories to build private mesh networks — the infrastructure layer below the internet.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Noderunners Store · 06</span>
+    </footer>
+  </section>
+
+  <!-- 5·1 — Noderunners Store detail -->
+  <section class="s detail" data-row="5" data-col="1" data-label="Noderunners Detail">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:36px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">Deeper Read</div>
+        <div class="h2">The hardware sovereignty stack.</div>
+      </div>
+      <div class="grid-2 anim d1" style="gap:32px;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Why a Physical Store</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Most noderunner hardware is purchased online, configured in isolation, and never tested in a community context. The Noderunners Store provides hands-on guidance, pre-configuration, and ongoing support — not just a product.</p>
+          </div>
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Archipelago Integration</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">The store is the retail face of Archipelago — the flagship Labs 484 project. As Archipelago ships, the store becomes the primary distribution and onboarding channel for hardware units.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass crest" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:12px;">Product Lines</div>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px;">
+              <div style="font-size:18px;color:var(--text-primary);">Bitcoin node hardware (Start9, Umbrel, custom)</div>
+              <div style="font-size:18px;color:var(--text-primary);">AI inference hardware (GPU rigs, edge AI devices)</div>
+              <div style="font-size:18px;color:var(--text-primary);">Mesh network devices (Meshtastic + accessories)</div>
+              <div style="font-size:18px;color:var(--text-primary);">Peripherals: antennas, enclosures, cables</div>
+              <div style="font-size:18px;color:var(--text-primary);">Software + configuration services</div>
+            </div>
+          </div>
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Revenue Model</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Hardware retail + configuration services + ongoing support memberships. Member pricing for ArcTec Circle members. Public pricing for walk-in and online sales.</p>
+            <div class="forthcoming" style="margin-top:16px;">Full unit economics forthcoming</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Noderunners Detail · 06–</span>
+    </footer>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ROW 6 — RADIUS GROCERY
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- 6·0 — Radius Grocery (main) -->
+  <section class="s arctic" data-row="6" data-col="0" data-label="Radius Grocery">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:48px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">Revenue Stream 2</div>
+        <div class="h1">Radius <span class="aurora">Grocery</span>.</div>
+      </div>
+      <p class="lead anim d1" style="max-width:56ch;">Clean, organic, and natural foods located at ArcTec — supporting decentralized food logistics and local food security for the community and the public.</p>
+      <div class="grid-3 anim d2">
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Local Food</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Sourced close. Sold honest.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Raw milk, local produce, and goods from Austin-area suppliers. Food sovereignty starts with knowing where your food comes from.</div>
+        </div>
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Prepared Foods</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Ready when you are.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Grab-and-go options for members in flow. Clean ingredients, honest labeling, no shortcuts — food that fuels the kind of work happening at ArcTec.</div>
+        </div>
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Sublease Model</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Tenant. Partner. Community asset.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Radius Grocery operates as a sublease tenant at ArcTec — generating passive income for the campus while serving a critical community function.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Radius Grocery · 07</span>
+    </footer>
+  </section>
+
+  <!-- 6·1 — Radius Grocery detail -->
+  <section class="s detail" data-row="6" data-col="1" data-label="Radius Grocery Detail">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:36px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">Deeper Read</div>
+        <div class="h2">Food sovereignty at the campus layer.</div>
+      </div>
+      <div class="grid-2 anim d1" style="gap:32px;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Why Food at a Tech Campus</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">The conventional separation of tech and food infrastructure is a bug, not a feature. When builders don't have to leave campus for groceries or a clean meal, they stay in flow longer. Food sovereignty is part of the full-stack ArcTec thesis.</p>
+          </div>
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Decentralized Food Logistics</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Radius Grocery is also a node in a broader decentralized food logistics model — sourcing directly from local producers and providing an alternative to centralized grocery chains for the Austin community.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass crest" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:12px;">Business Structure</div>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px;">
+              <div style="font-size:18px;color:var(--text-primary);">Operates as a sublease tenant at ArcTec</div>
+              <div style="font-size:18px;color:var(--text-primary);">Revenue: retail sales + member pricing tier</div>
+              <div style="font-size:18px;color:var(--text-primary);">Sourcing: Austin-area local producers</div>
+              <div style="font-size:18px;color:var(--text-primary);">Products: raw milk, produce, prepared foods</div>
+              <div style="font-size:18px;color:var(--text-primary);">Future: expand to ArcTec delivery network</div>
+            </div>
+          </div>
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Revenue Contribution</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Sublease income from Radius Grocery is a recurring, passive contribution to ArcTec Center's total revenue. As campus foot traffic grows, grocery revenue scales with it.</p>
+            <div class="forthcoming" style="margin-top:16px;">Full sublease economics forthcoming</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Radius Detail · 07–</span>
+    </footer>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ROW 7 — KITCHEN 484
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- 7·0 — Kitchen 484 (main) -->
+  <section class="s arctic" data-row="7" data-col="0" data-label="Kitchen 484">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:48px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">Revenue Stream 3</div>
+        <div class="h1">Kitchen <span class="aurora">484</span>.</div>
+      </div>
+      <p class="lead anim d1" style="max-width:56ch;">A food service kitchen for the private members of ArcTec — organic, local, and grass-fed food that fuels the community and grows the network.</p>
+      <div class="grid-3 anim d2">
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Food for Node Runners</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">Fuel the builders.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Hot meals, clean ingredients, and community dining designed for people spending long days building the next internet.</div>
+        </div>
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Organic, Local, Grass-Fed</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">No compromise on inputs.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">The same sovereignty principle applied to food: know your source, trust your producer, own your nutrition stack. Sourced from Radius Grocery and Austin-area farms.</div>
+        </div>
+        <div class="glass" style="padding:32px;">
+          <div class="label" style="margin-bottom:16px;">Community Staple</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">The table where ideas ship.</div>
+          <div style="font-size:18px;color:var(--text-body);line-height:1.6;">Shared meals build stronger networks than shared Slack channels. Kitchen 484 is where the community forms across projects and disciplines.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Kitchen 484 · 08</span>
+    </footer>
+  </section>
+
+  <!-- 7·1 — Kitchen 484 detail -->
+  <section class="s detail" data-row="7" data-col="1" data-label="Kitchen 484 Detail">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:36px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">Deeper Read</div>
+        <div class="h2">Operations + revenue model.</div>
+      </div>
+      <div class="grid-2 anim d1" style="gap:32px;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Service Model</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Kitchen 484 operates as a food truck and on-site kitchen, serving private ArcTec members as a core service. The food truck model keeps overhead low while maximizing flexibility as campus capacity grows.</p>
+          </div>
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Member Access</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Food service is integrated into the ArcTec membership model — members receive access to Kitchen 484 as part of their overall package. This creates a reliable demand floor independent of walk-in traffic.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass crest" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:12px;">Integration with the Campus</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Kitchen 484 sources from Radius Grocery — closing the loop between food retail and food service on campus. As Radius Grocery's local supply chain matures, Kitchen 484's ingredient quality and cost efficiency both improve.</p>
+          </div>
+          <div class="glass" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:10px;">Community Growth Driver</div>
+            <p style="font-size:20px;color:var(--text-body);line-height:1.6;margin:0;">Shared meals are one of the most effective community formation tools available. Kitchen 484 makes the ArcTec community stickier — members who eat together stay together, and they refer others.</p>
+            <div class="forthcoming" style="margin-top:16px;">Full kitchen economics forthcoming</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Kitchen Detail · 08–</span>
+    </footer>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ROW 8 — CURRENT REVENUE
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- 8·0 — Current Revenue (main) -->
+  <section class="s arctic" data-row="8" data-col="0" data-label="Current Revenue">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:48px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">Traction</div>
+        <div class="h1">Current <span class="aurora">revenue</span>.</div>
+      </div>
+      <div class="grid-2 anim d1" style="gap:40px;align-items:center;">
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div>
+            <div class="stat" style="color:var(--cyan);">$19k</div>
+            <div style="font-size:24px;color:var(--text-muted);margin-top:8px;font-family:var(--font-mono);letter-spacing:0.06em;">per month — today</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:20px;">
+            <div style="height:2px;flex:1;background:var(--grad-aurora);border-radius:1px;opacity:0.5;"></div>
+            <div style="font-family:var(--font-mono);font-size:13px;letter-spacing:0.10em;color:var(--text-faint);">WITH CAPITAL</div>
+            <div style="height:2px;flex:1;background:var(--grad-aurora);border-radius:1px;opacity:0.5;"></div>
+          </div>
+          <div>
+            <div class="stat" style="color:var(--text-primary);">$150k</div>
+            <div style="font-size:24px;color:var(--text-muted);margin-top:8px;font-family:var(--font-mono);letter-spacing:0.06em;">per month — at scale</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass crest" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:12px;">What's Active Now</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="font-size:19px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">✓</span> All revenue models are live</div>
+              <div style="font-size:19px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">✓</span> Low-cost, high-impact structure</div>
+              <div style="font-size:19px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">✓</span> Room to grow at every level</div>
+            </div>
+          </div>
+          <div class="forthcoming" style="padding:20px 28px;border-radius:var(--r-card);font-size:16px;">
+            Revenue breakdown by stream — forthcoming
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Current Revenue · 09</span>
+    </footer>
+  </section>
+
+  <!-- 8·1 — Revenue detail (placeholder) -->
+  <section class="s detail" data-row="8" data-col="1" data-label="Revenue Breakdown">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:40px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">Deeper Read</div>
+        <div class="h2">Revenue breakdown by stream.</div>
+      </div>
+      <div class="anim d1" style="display:flex;flex-direction:column;gap:24px;">
+        <p class="lead" style="max-width:60ch;">A detailed breakdown of revenue by source — membership, hardware, grocery, food service, and sublease — along with the growth path to $150k/month is forthcoming.</p>
+        <div class="glass" style="padding:40px 48px;display:flex;flex-direction:column;gap:28px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--glass-border);">
+            <div style="font-size:22px;font-weight:500;color:var(--text-primary);">Total current MRR</div>
+            <div class="stat-sm">$19,000</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--glass-border);">
+            <div style="font-size:22px;color:var(--text-muted);">Revenue by stream</div>
+            <div class="forthcoming">Detail forthcoming</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--glass-border);">
+            <div style="font-size:22px;color:var(--text-muted);">Growth path to $150k/month</div>
+            <div class="forthcoming">Detail forthcoming</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:22px;color:var(--text-muted);">Timeline + milestones</div>
+            <div class="forthcoming">Detail forthcoming</div>
+          </div>
+        </div>
+        <p style="font-size:18px;color:var(--text-muted);font-style:italic;">Financial detail has been flagged for inclusion. Full breakdown will be added once revenue modeling is complete.</p>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Revenue Breakdown · 09–</span>
+    </footer>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ROW 9 — INVESTMENT OPPORTUNITY
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- 9·0 — Investment Opportunity (main) -->
+  <section class="s arctic" data-row="9" data-col="0" data-label="Investment Opportunity">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:48px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">The Ask</div>
+        <div class="h1">Investment <span class="aurora">opportunity</span>.</div>
+      </div>
+      <div class="grid-2 anim d1" style="gap:40px;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div>
+            <div class="stat" style="color:var(--cyan);">$2.5M</div>
+            <div style="font-size:24px;color:var(--text-muted);margin-top:8px;font-family:var(--font-mono);letter-spacing:0.06em;">over 5 years</div>
+          </div>
+          <p class="lead" style="max-width:36ch;">A 5-year partnership that delivers a fully built sovereign tech campus scaling at 5% revenue per week.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="glass crest" style="padding:28px 32px;">
+            <div class="label" style="margin-bottom:14px;">What You Get</div>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div style="font-size:19px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">→</span> Fully built ArcTec campus</div>
+              <div style="font-size:19px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">→</span> 5% revenue growth per week (at scale)</div>
+              <div style="font-size:19px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">→</span> Revenue share on full L484 operations</div>
+              <div style="font-size:19px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">→</span> Quarterly reporting — 24-month ramp</div>
+            </div>
+          </div>
+          <div class="forthcoming" style="padding:20px 28px;border-radius:var(--r-card);font-size:16px;">
+            Full deal terms + revenue share structure forthcoming
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Investment Opportunity · 10</span>
+    </footer>
+  </section>
+
+  <!-- 9·1 — Investment detail (placeholder) -->
+  <section class="s detail" data-row="9" data-col="1" data-label="Deal Terms">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:40px;">
+      <div class="anim">
+        <div class="label" style="margin-bottom:14px;">Deeper Read</div>
+        <div class="h2">Full deal structure.</div>
+      </div>
+      <div class="anim d1" style="display:flex;flex-direction:column;gap:24px;">
+        <p class="lead" style="max-width:60ch;">Complete deal terms including revenue share percentage, reporting cadence, use-of-funds breakdown, and the 24-month ramp-to-revenue-share structure are forthcoming.</p>
+        <div class="glass" style="padding:40px 48px;display:flex;flex-direction:column;gap:28px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--glass-border);">
+            <div style="font-size:22px;font-weight:500;color:var(--text-primary);">Investment amount</div>
+            <div class="stat-sm">$2.5M</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--glass-border);">
+            <div style="font-size:22px;color:var(--text-muted);">Term</div>
+            <div style="font-size:22px;font-weight:600;color:var(--text-primary);">5 years</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--glass-border);">
+            <div style="font-size:22px;color:var(--text-muted);">Revenue share %</div>
+            <div class="forthcoming">Forthcoming</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--glass-border);">
+            <div style="font-size:22px;color:var(--text-muted);">Use of funds</div>
+            <div class="forthcoming">Forthcoming</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:22px;color:var(--text-muted);">Reporting structure</div>
+            <div style="font-size:22px;font-weight:600;color:var(--text-primary);">Quarterly — 24-mo ramp</div>
+          </div>
+        </div>
+        <p style="font-size:18px;color:var(--text-muted);font-style:italic;">Contact Labs 484 to receive the full investment brief and schedule a conversation.</p>
+      </div>
+    </div>
+    <footer class="foot">
+      <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
+      <span class="foot__n">Deal Terms · 10–</span>
+    </footer>
   </section>
 
 </deck-stage>
 <script src="deck-stage.js"></script>
+<script src="nav2d.js"></script>
 </body>
 </html>
