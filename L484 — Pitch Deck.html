@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+<title>Labs 484: Investor Pitch Deck</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<script>
+(function(){
+  var touch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (touch && window.innerWidth > 767) {
+    document.documentElement.classList.add('is-touch-landscape');
+    document.addEventListener('DOMContentLoaded', function(){
+      var s = document.querySelector('deck-stage');
+      if (s) s.setAttribute('no-rail', '');
+    });
+  }
+}());
+</script>
+<div id="m-counter"></div>
+<button id="rail-toggle" aria-label="Toggle slide panel" title="Toggle slide panel">&#9776;</button>
+<deck-stage width="1920" height="1080">
+
+  <!-- 01 — COVER -->
+  <section class="s night" data-label="Cover">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;">
+      <h1 class="anim d1" style="font-family:var(--font-display);font-weight:500;font-size:var(--t-title);line-height:1.0;color:var(--paper-50);margin:0 0 24px;">Labs 484</h1>
+      <p class="lead anim d2" style="font-size:var(--t-lead);color:var(--text-muted);margin:0;max-width:40ch;">Investor Pitch Deck</p>
+      <footer class="foot"><div class="foot__b"><span class="foot__w">L484</span></div><span class="foot__n">Cover · 01</span></footer>
+    </div>
+  </section>
+
+</deck-stage>
+<script src="deck-stage.js"></script>
+</body>
+</html>

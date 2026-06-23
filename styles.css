@@ -1,0 +1,760 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap');
+
+/* ============================================================
+   TOKEN LAYER 1 — Reimagine Ranch Design System
+   Canonical values. Mirror of _ds/tokens/*.css.
+   Update _ds/ snapshot when changing values here.
+   ============================================================ */
+:root {
+  /* Palette — Paper */
+  --paper-50: #FBF7EE; --paper-100: #F4EDDD; --paper-200: #ECE3CE; --paper-300: #E0D3B8;
+  /* Palette — Ink */
+  --ink-900: #1C170F; --ink-800: #2A2218; --ink-700: #3D3324; --ink-600: #574A36; --ink-500: #756448; --ink-400: #9A876A;
+  /* Palette — Bronze */
+  --bronze-600: #846949; --bronze-500: #9E835C; --bronze-400: #BCA079; --bronze-300: #D8C4A0;
+  /* Palette — Sun */
+  --sun-700: #B4711C; --sun-600: #D98A2B; --sun-500: #E9A23B; --sun-400: #F4B845; --sun-300: #F8CE74; --sun-200: #FBE3AC;
+  /* Palette — Forest / Moss */
+  --forest-900: #12301E; --forest-800: #1B4128; --forest-700: #2E5A3A; --forest-600: #46774E; --moss-500: #5BA84A;
+  /* Palette — Night */
+  --night-950: #0C0F0C; --night-900: #11150F; --night-850: #161C15; --night-800: #1E261C; --night-700: #2A3427;
+
+  /* Jackson primitives */
+  --ink: #0D0B08;
+  --gold: #C9A84C;
+  --gold-light: #E8D5A3;
+  --gold-dark: #8B6F35;
+  --parchment: #F7F3EC;
+  --warm-cream: #F4EEE2;
+  --bd-hair: rgba(201,168,76,.08);
+  --bd-quiet: rgba(201,168,76,.15);
+  --bd-active: rgba(201,168,76,.35);
+  --ease-cathedral: cubic-bezier(0.25,0.46,0.45,0.94);
+
+  /* Semantic — night-mode text (Jackson parchment scale) */
+  --text-body:  #F7F3EC;
+  --text-muted: rgba(247,243,236,.75);
+  --text-faint: #6B6660;
+
+  /* Semantic — accent + gradients (Jackson gold) */
+  --accent:      var(--gold);
+  --grad-gold:   linear-gradient(90deg, var(--gold-dark), var(--gold));
+
+  /* Semantic — hairlines (Jackson gold-tinted) */
+  --border-hair:        var(--bd-hair);
+  --border-hair-strong: var(--bd-quiet);
+
+  /* Typefaces (Cormorant Garamond display + Jost sans) */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-serif:   'Cormorant Garamond', Georgia, serif;
+  --font-sans:    'Jost', system-ui, sans-serif;
+  --font-mono:    'Space Mono', ui-monospace, monospace;
+}
+
+/* ============================================================
+   TOKEN LAYER 2 — Deck-specific
+   Presentation canvas constants. Not in the DS.
+   ============================================================ */
+:root {
+  --accent-hi: var(--gold-light);
+
+  /* Type scale — sized for 1920×1080 canvas */
+  --t-eyebrow: 18px; --t-title: 86px; --t-h2: 62px;  --t-lead: 33px;
+  --t-body:    25px; --t-small: 21px;  --t-micro: 16px;
+  --t-stat:    128px; --t-stat-sm: 84px;
+
+  /* Layout */
+  --pad-x: 112px; --pad-y: 86px;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+deck-stage:not(:defined){visibility:hidden;}
+html,body{margin:0;background:#000;}
+img{display:block;max-width:100%;}
+
+/* ---- slide frame ---- */
+.s{font-family:var(--font-sans);color:var(--text-body);overflow:hidden;position:relative;}
+.s.night{background:var(--ink);}
+.s.night::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.07) 0%, transparent 55%),
+             radial-gradient(ellipse at 80% 80%, rgba(123,79,46,.05) 0%, transparent 45%);
+  pointer-events:none;z-index:0;}
+.s.night .frame{position:relative;z-index:1;}
+.s.paper,.s.cream{background:var(--warm-cream);color:var(--ink);}
+
+/* ---- cream — token overrides (cascades into all inline var() references) ---- */
+.s.cream {
+  --paper-50: var(--ink);
+  --text-body: rgba(13,11,8,.78);
+  --text-muted: rgba(13,11,8,.55);
+  --text-faint: rgba(13,11,8,.38);
+  --accent-hi: var(--gold-dark);
+  --border-hair: rgba(201,168,76,.22);
+}
+/* pill-outline: gold-light text is hardcoded in the class, can't cascade — override directly */
+.cream .pill-outline {
+  color: var(--gold-dark);
+  border-color: rgba(201,168,76,.45);
+  background: rgba(201,168,76,.07);
+}
+/* S12 phase-1 banner: dark forest bg on a cream slide — restore light tokens inside it */
+.cream .slide-phase-banner { --paper-50: #FBF7EE; }
+.cream .slide-phase-banner .body { color: rgba(247,243,236,.75); }
+.cream .slide-phase-banner .kicker { color: var(--moss-500); }
+
+.frame{position:relative;width:100%;height:100%;padding:var(--pad-y) var(--pad-x);
+  display:flex;flex-direction:column;}
+
+/* ---- pill labels (replaces eyebrow system) ---- */
+.pill{display:inline-flex;align-items:center;gap:14px;font-family:var(--font-sans);font-weight:600;
+  font-size:20px;letter-spacing:.2em;text-transform:uppercase;
+  padding:14px 32px 13px;border-radius:999px;line-height:1;margin-bottom:24px;align-self:flex-start;}
+.pill .num{font-weight:500;opacity:.55;}
+.pill-outline{border:1px solid var(--bd-active);color:var(--gold-light);background:rgba(201,168,76,.04);}
+.pill-inverse{background:var(--parchment);color:var(--ink);border:1px solid transparent;}
+.pill-gold{background:var(--gold);color:var(--ink);border:1px solid transparent;}
+/* Inverse fill — parchment on dark, ink on light (Jackson's pill-inverse convention) */
+.s.night .pill,.s.night .pill-outline{background:var(--parchment);color:var(--ink);border:none;}
+.s.cream .pill,.s.cream .pill-outline,.s.paper .pill,.s.paper .pill-outline{background:var(--ink);color:var(--parchment);border:none;}
+
+/* ---- shared type ---- */
+.title{font-family:var(--font-display);font-weight:500;
+  letter-spacing:.04em;line-height:1.05;color:var(--paper-50);margin:0;font-size:var(--t-h2);}
+.paper .title,.cream .title{color:var(--ink);}
+.lead{font-family:var(--font-serif);font-size:var(--t-lead);line-height:1.32;color:var(--text-body);margin:0;font-weight:500;}
+.paper .lead,.cream .lead{color:rgba(13,11,8,.75);}
+.body{font-size:var(--t-body);line-height:1.5;color:var(--text-muted);margin:0;}
+.paper .body,.cream .body{color:rgba(13,11,8,.6);}
+.mono{font-family:var(--font-mono);letter-spacing:.04em;}
+.serif{font-family:var(--font-serif);}
+
+/* ---- footer chrome ---- */
+.foot{position:absolute;left:var(--pad-x);right:var(--pad-x);bottom:44px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:var(--t-micro);color:var(--text-muted);
+  border-top:1px solid var(--border-hair);padding-top:18px;}
+.foot__b{display:flex;align-items:center;gap:13px;}
+.foot__b img{height:34px;width:auto;opacity:.92;}
+.foot__w{font-family:var(--font-display);font-weight:600;text-transform:uppercase;
+  letter-spacing:.16em;font-size:15px;color:var(--paper-50);}
+.paper .foot,.cream .foot{color:rgba(13,11,8,.5);border-top-color:rgba(13,11,8,.12);}
+.paper .foot__w,.cream .foot__w{color:var(--ink);}
+.foot__n{font-family:var(--font-mono);letter-spacing:.12em;white-space:nowrap;}
+
+/* ---- stat ---- */
+.stat{font-family:var(--font-display);font-weight:500;line-height:.86;color:var(--paper-50);}
+.gold{color:var(--accent);}
+.paper .stat,.cream .stat{color:var(--ink);}
+
+/* ---- chips / pills ---- */
+.chip{display:inline-flex;align-items:center;gap:10px;font-size:var(--t-small);
+  font-weight:600;color:var(--text-body);padding:11px 20px;border-radius:999px;
+  border:1px solid var(--border-hair-strong);background:color-mix(in oklab,var(--paper-50) 4%,transparent);}
+.chip .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
+.paper .chip,.cream .chip{color:var(--ink);border-color:rgba(13,11,8,.18);
+  background:rgba(13,11,8,.03);}
+
+/* ---- card ---- */
+.card{background:color-mix(in oklab,var(--paper-50) 5%,transparent);
+  border:1px solid var(--border-hair);border-radius:18px;padding:36px 36px 34px;position:relative;overflow:hidden;}
+.card.crest::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-gold);}
+.paper .card,.cream .card{background:#fff;border-color:rgba(201,168,76,.3);box-shadow:0 8px 22px -10px rgba(13,11,8,.12);}
+
+.kicker{font-family:var(--font-sans);font-weight:700;text-transform:uppercase;
+  letter-spacing:.14em;font-size:var(--t-micro);color:var(--accent-hi);}
+.paper .kicker,.cream .kicker{color:var(--gold-dark);}
+
+/* ---- bars ---- */
+.bar-track{height:18px;border-radius:999px;background:color-mix(in oklab,var(--paper-50) 8%,transparent);overflow:hidden;}
+.bar-fill{height:100%;border-radius:999px;background:var(--grad-gold);}
+.bar-fill.dim{background:linear-gradient(90deg,var(--forest-700),var(--forest-600));}
+.paper .bar-track,.cream .bar-track{background:rgba(13,11,8,.1);}
+
+/* entrance */
+@media (prefers-reduced-motion:no-preference){
+  [data-deck-active] .anim{animation:rise .6s both;}
+  [data-deck-active] .anim.d1{animation-delay:.10s;}
+  [data-deck-active] .anim.d2{animation-delay:.20s;}
+  [data-deck-active] .anim.d3{animation-delay:.30s;}
+  [data-deck-active] .anim.d4{animation-delay:.40s;}
+}
+@keyframes rise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+
+/* ============================================================
+   MOBILE CARD VIEWER  (max-width: 767px)
+   deck-stage is hidden; slides are extracted into #mobile-deck
+   by the script below — presented one full-screen card at a time.
+   Navigate: swipe left/right  OR  tap left/right half of screen.
+   ============================================================ */
+@media (max-width: 767px) {
+  deck-stage { display: none !important; }
+
+  /* ── CONTAINER ── */
+  #mobile-deck {
+    display: block;
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: var(--night-950);
+    z-index: 9000;
+  }
+
+  /* ── EACH CARD ── */
+  #mobile-deck .s {
+    display: none;
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding: 48px 24px 80px;
+  }
+  #mobile-deck .s.paper,
+  #mobile-deck .s.cream {
+    background: var(--warm-cream);
+  }
+  #mobile-deck .s.m-active {
+    display: block;
+  }
+
+  /* ── KILL DESKTOP LAYOUT ── */
+  #mobile-deck .frame {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  /* Absolute inner split container → flex column */
+  #mobile-deck .frame > .slide-split {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  /* All grids → single column (align-items:stretch prevents right-drift from inline align-items:end) */
+  #mobile-deck .slide-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    align-items: stretch !important;
+  }
+
+  /* ── OVERLAY HERO — Cover, Land, Water ── */
+  /* Remove section side/top padding so photos are full-bleed */
+  #mobile-deck [data-label="Cover"],
+  #mobile-deck [data-label="The Land"],
+  #mobile-deck [data-label="Water Infrastructure"] {
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Cover & Land: photo is the RIGHT (last) column → pull to top */
+  #mobile-deck [data-label="Cover"] .frame > div > div:last-child,
+  #mobile-deck [data-label="The Land"] .frame > div > div:last-child {
+    order: -1 !important;
+    height: 360px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 0 !important;
+    margin-bottom: 0 !important;
+    flex-shrink: 0 !important;
+    z-index: 1 !important;
+  }
+
+  /* Water: photo in flex flow — title+lead overlap bottom of photo, body below */
+  #mobile-deck [data-label="Water Infrastructure"] .frame > div > div:first-child {
+    height: 360px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 0 !important;
+    margin-bottom: 0 !important;
+    flex-shrink: 0 !important;
+    z-index: 1 !important;
+  }
+
+  /* img fills hero container */
+  #mobile-deck [data-label="Cover"] .frame > div > div:last-child img,
+  #mobile-deck [data-label="The Land"] .frame > div > div:last-child img,
+  #mobile-deck [data-label="Water Infrastructure"] .frame > div > div:first-child img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* Gradient scrim divs inside photo panels — show and override to strong bottom fade */
+  #mobile-deck [data-label="Cover"] .frame > div > div:last-child > div,
+  #mobile-deck [data-label="The Land"] .frame > div > div:last-child > div,
+  #mobile-deck [data-label="Water Infrastructure"] .frame > div > div:first-child > div {
+    display: block !important;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(12,15,12,0.5) 50%,
+      rgba(12,15,12,0.9) 75%,
+      var(--night-950) 92%
+    ) !important;
+    pointer-events: none !important;
+  }
+  /* Cover: stronger gradient starts from y=0 since content panel begins there */
+  #mobile-deck [data-label="Cover"] .frame > div > div:last-child > div {
+    background: linear-gradient(
+      to bottom,
+      rgba(12,15,12,0.28) 0%,
+      rgba(12,15,12,0.60) 42%,
+      rgba(12,15,12,0.90) 70%,
+      var(--night-950) 90%
+    ) !important;
+  }
+
+  /* Content panels — float up over the photo bottom via negative margin */
+  /* Cover: content panel floats up 260px into the photo */
+  #mobile-deck [data-label="Cover"] .frame > div > div:first-child {
+    padding: 0 24px 0 !important;
+    position: relative !important;
+    z-index: 2 !important;
+    margin-top: -260px !important;
+    justify-content: flex-start !important;
+  }
+  /* Land: -100px keeps "22 Acres" block below the photo */
+  #mobile-deck [data-label="The Land"] .frame > div > div:first-child {
+    padding: 0 24px 0 !important;
+    position: relative !important;
+    z-index: 2 !important;
+    margin-top: -100px !important;
+  }
+  /* Water: -180px overlap — eyebrow+title+lead sit over photo, body flows below */
+  #mobile-deck [data-label="Water Infrastructure"] .frame > div > div:last-child {
+    padding: 0 24px 0 !important;
+    position: relative !important;
+    z-index: 2 !important;
+    margin-top: -180px !important;
+  }
+
+  /* Cover: h1 title size + byline */
+  #mobile-deck [data-label="Cover"] h1 {
+    font-size: 46px !important;
+    line-height: 1.0 !important;
+  }
+  #mobile-deck [data-label="Cover"] .slide-byline {
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    margin-top: 40px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px 14px !important;
+  }
+
+  /* Cover: logo mark — absolute, pinned upper-right of the photo area */
+  #mobile-deck [data-label="Cover"] .slide-logo {
+    position: absolute !important;
+    top: -84px !important;
+    right: 24px !important;
+    left: auto !important;
+    margin-bottom: 0 !important;
+    z-index: 5 !important;
+    background: rgba(12,15,12,0.52) !important;
+    border-radius: 8px !important;
+    padding: 7px 10px !important;
+  }
+  #mobile-deck [data-label="Cover"] .slide-logo img {
+    height: 34px !important;
+  }
+  #mobile-deck [data-label="Cover"] .slide-logo span {
+    display: none !important;
+  }
+
+  /* ── TYPE SCALE ── */
+  #mobile-deck .title   { font-size: 34px !important; line-height: 1.1 !important; }
+  #mobile-deck .pill    { font-size: 10px !important; padding: 9px 16px 8px !important; margin-bottom: 14px !important; }
+  #mobile-deck .lead    { font-size: 17px !important; line-height: 1.45 !important; max-width: 100% !important; }
+  #mobile-deck .body    { font-size: 15px !important; }
+  #mobile-deck .kicker  { font-size: 10px !important; }
+  #mobile-deck .stat    { font-size: 44px !important; }
+  #mobile-deck .gold    { font-size: 44px !important; }
+  #mobile-deck .chip    { font-size: 13px !important; padding: 8px 14px !important; }
+  #mobile-deck .card    { padding: 22px 20px 20px !important; border-radius: 12px !important; }
+
+  /* ── UNIT ECONOMICS — keep label+number on one line, smaller ── */
+  #mobile-deck [data-label="Unit Economics"] .stat { font-size: 24px !important; }
+  #mobile-deck [data-label="Unit Economics"] .gold { font-size: 24px !important; }
+  #mobile-deck [data-label="Unit Economics"] .slide-spread-stat { font-size: 40px !important; }
+  #mobile-deck [data-label="Unit Economics"] .slide-bar-label { font-size: 16px !important; }
+
+  /* ── REVENUE PER ACRE — full-width stream pills ── */
+  #mobile-deck [data-label="Revenue Per Acre"] .rps {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+  }
+
+  /* ── DEMAND CURVE — bar label width ── */
+  #mobile-deck [data-label="The Demand Curve"] .slide-bar-year {
+    width: 76px !important;
+  }
+
+  /* ── THE LAND — tighten "22 Acres" spacing, align Elgin text left ── */
+  #mobile-deck [data-label="The Land"] .slide-stat-row {
+    gap: 10px !important;
+    position: relative !important;
+    padding-bottom: 6px !important;
+    margin-top: 50px !important;
+  }
+  #mobile-deck [data-label="The Land"] .slide-acres-label {
+    font-size: 18px !important;
+  }
+  /* "Elgin, Texas · 30 min from Austin" — pull below "22", left-aligned */
+  #mobile-deck [data-label="The Land"] .slide-stat-row .body {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    margin-top: 0 !important;
+    font-size: 13px !important;
+  }
+
+  /* ── PRODUCT — Phase 1 Layer flex row ── */
+  #mobile-deck [data-label="The Product"] .slide-phase-banner {
+    flex-wrap: wrap !important;
+    gap: 10px 16px !important;
+    align-items: flex-start !important;
+  }
+  #mobile-deck [data-label="The Product"] .slide-divider {
+    display: none !important;
+  }
+  #mobile-deck [data-label="The Product"] .slide-phase-label {
+    white-space: normal !important;
+  }
+
+  /* ── THE ASK — byline reset (was position:absolute;bottom) ── */
+  #mobile-deck [data-label="The Ask"] .slide-contact {
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    margin-top: 28px !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+
+  /* ── TEAM — 2×2 grid ── */
+  #mobile-deck [data-label="The Team"] .slide-team-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+  #mobile-deck .tcard     { border-radius: 10px !important; overflow: hidden; }
+  #mobile-deck .tportrait { height: 140px !important; }
+  #mobile-deck .tname     { font-size: 16px !important; }
+  #mobile-deck .tbio      { font-size: 12px !important; line-height: 1.45 !important; }
+  #mobile-deck .tbody     { padding: 12px 14px 14px !important; }
+
+  /* ── FOOTER — hide ── */
+  #mobile-deck .foot { display: none !important; }
+
+  /* ── MISC ── */
+  #mobile-deck .bar-track { height: 12px !important; }
+  #mobile-deck .uf        { flex-wrap: wrap !important; gap: 8px !important; }
+  #mobile-deck .uf__v     { min-width: 40px !important; text-align: right !important; }
+}
+
+/* Slide counter (global — visible only on mobile via JS) */
+#m-counter {
+  position: fixed;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  right: 24px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  color: var(--text-muted);
+  z-index: 9001;
+  pointer-events: none;
+  display: none;
+}
+
+/* Desktop: hide mobile container + counter */
+@media (min-width: 768px) {
+  #mobile-deck { display: none; }
+}
+
+/* ============================================================
+   RAIL TOGGLE BUTTON
+   Visible only on touch landscape (≥768px). Hidden on desktop
+   and inside the portrait card viewer.
+   ============================================================ */
+#rail-toggle {
+  display: none; /* hidden by default; .is-touch-landscape enables it */
+  position: fixed;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  left: 20px;
+  z-index: 9100;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border-hair-strong);
+  border-radius: 10px;
+  background: color-mix(in oklab, var(--night-900) 90%, transparent);
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: color 0.15s, border-color 0.15s;
+}
+#rail-toggle:active { color: var(--paper-50); border-color: var(--border-hair-strong); }
+#rail-toggle.rail-hidden { color: var(--accent-hi); border-color: var(--accent-hi); }
+
+.is-touch-landscape #rail-toggle { display: flex; align-items: center; justify-content: center; }
+
+/* ============================================================
+   TOUCH LANDSCAPE  (≥768px on a touch device)
+   deck-stage is active; rail is suppressed; button is visible.
+   No card viewer. Safe-area padding for notched phones.
+   ============================================================ */
+@media (min-width: 768px) {
+  html.is-touch-landscape,
+  html.is-touch-landscape body {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* revenue-per-acre stream pills */
+.rps{font-size:15px;font-weight:600;color:var(--paper-50);background:color-mix(in oklab,var(--sun-500) 16%,transparent);
+  border:1px solid color-mix(in oklab,var(--sun-500) 45%,transparent);border-radius:10px;
+  padding:16px 12px;min-height:64px;display:flex;align-items:center;line-height:1.2;}
+.rps.dim{color:var(--text-body);background:color-mix(in oklab,var(--forest-600) 22%,transparent);
+  border-color:color-mix(in oklab,var(--forest-600) 40%,transparent);}
+.rps.ghost{background:transparent;border:1px dashed var(--border-hair);min-height:64px;}
+/* use of funds row */
+.uf{display:flex;align-items:center;gap:30px;}
+.uf__l{width:380px;font-size:var(--t-body);color:var(--paper-50);font-weight:600;}
+.uf__v{width:80px;text-align:right;font-family:var(--font-mono);font-size:var(--t-body);color:var(--accent-hi);}
+/* team cards */
+.tcard{position:relative;background:color-mix(in oklab,var(--paper-50) 5%,transparent);border:1px solid var(--border-hair);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;}
+.tcard.crest::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-gold);z-index:3;}
+.tportrait{width:100%;height:165px;display:block;background:#1b221a;border-bottom:1px solid var(--border-hair);color:var(--bronze-300);font-family:var(--font-sans);box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--bronze-400) 22%,transparent);}
+.tbody{padding:16px 22px 18px;display:flex;flex-direction:column;gap:7px;flex:1;}
+.tname{font-family:var(--font-display);font-weight:500;font-size:27px;color:var(--paper-50);letter-spacing:.02em;}
+.cream .tcard{background:rgba(13,11,8,.05);border-color:rgba(201,168,76,.2);}
+.cream .tname{color:var(--ink);}
+.tbio{font-size:var(--t-small);color:var(--text-muted);line-height:1.5;margin:0;}
+
+
+/* ============================================================
+   PHASE 2B — Extracted slide layout rules
+   (inline styles moved here; HTML elements carry class only)
+   ============================================================ */
+
+/* ── Split-panel hero containers (Cover / Land / Water) ─── */
+.slide-split {
+  position: absolute;
+  inset: 0;
+  display: grid;
+}
+[data-label="Cover"] .slide-split              { grid-template-columns: 1.05fr .95fr; }
+[data-label="The Land"] .slide-split           { grid-template-columns: 1.08fr .92fr; }
+[data-label="Water Infrastructure"] .slide-split { grid-template-columns: .85fr 1.15fr; }
+
+/* ── Generic grid base (display only; each slide scopes the rest) ── */
+.slide-grid { display: grid; }
+
+/* Revenue Per Acre — two structural patterns repeated 3× each */
+.slide-rpa-row   { grid-template-columns: 300px 1fr; align-items: center; gap: 34px; }
+.slide-rpa-pills { grid-template-columns: repeat(6, 1fr); gap: 8px; }
+
+/* Per-slide grid configurations */
+[data-label="The Demand Curve"] .slide-grid {
+  margin-top: 70px;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  max-width: 1480px;
+}
+[data-label="The Real Estate Premium"] .slide-grid {
+  margin-top: 50px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+[data-label="The Product"] .slide-grid {
+  margin-top: 46px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+[data-label="Unit Economics"] .slide-grid {
+  margin-top: 58px;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+/* Water: .anim selector distinguishes inner grid from .slide-split (no .anim) */
+[data-label="Water Infrastructure"] .anim.slide-grid {
+  margin-top: 30px;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+[data-label="The Event Layer"] .slide-grid {
+  margin-top: 54px;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 64px;
+  align-items: center;
+}
+[data-label="Go-To-Market"] .slide-grid {
+  margin-top: 56px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  align-items: stretch;
+}
+/* Team uses slide-team-grid for desktop config (mobile already overrides via slide-team-grid) */
+.slide-team-grid {
+  margin-top: 32px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+[data-label="The Ask"] .slide-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  max-width: 1500px;
+}
+
+/* ── Cover ─────────────────────────────────────────────── */
+.slide-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 54px;
+}
+.slide-byline {
+  position: absolute;
+  left: var(--pad-x);
+  bottom: 54px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ── The Demand Curve ──────────────────────────────────── */
+.slide-bar-year {
+  width: 88px;
+  flex-shrink: 0;
+  font-size: var(--t-micro);
+  color: var(--text-faint);
+}
+.slide-bar-year--hi { color: var(--accent-hi); }
+
+/* ── The Product ───────────────────────────────────────── */
+.slide-phase-banner {
+  margin-top: 24px;
+  background: var(--forest-900);
+  border: 1px solid color-mix(in oklab, var(--moss-500) 28%, transparent);
+  border-radius: 18px;
+  padding: 26px 34px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.slide-phase-label { color: var(--moss-500); white-space: nowrap; }
+.slide-divider     { width: 1px; height: 42px; background: var(--border-hair); }
+
+/* ── Unit Economics ────────────────────────────────────── */
+.slide-bar-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  font-size: 24px;
+  color: var(--ink-900);
+}
+.slide-spread-stat {
+  font-size: 72px;
+  margin-top: 14px;
+}
+/* inside a .paper slide but on a dark card — restore light color against .paper .stat override */
+.paper .slide-spread-stat {
+  color: var(--paper-50);
+}
+
+/* ── The Land ──────────────────────────────────────────── */
+.slide-stat-row {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  margin-top: 34px;
+}
+.slide-acres-label {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: 30px;
+  color: var(--paper-50);
+}
+
+/* ── The Ask ───────────────────────────────────────────── */
+.slide-contact {
+  position: absolute;
+  left: var(--pad-x);
+  bottom: 96px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* ── Jackson S-Reframe (The Answer) ───────────────────── */
+.s-reframe{ display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:var(--pad-y) 160px; }
+.s.s-reframe::before{ display:none; }
+.s-reframe .content{ max-width:1500px; display:flex; flex-direction:column; align-items:center; }
+.s-reframe .pill{ align-self:center; margin-bottom:0px; }
+.s-reframe h2{ font-family:var(--font-display); font-weight:300; font-size:108px; line-height:1.04; color:var(--paper-50); text-shadow:0 4px 40px rgba(0,0,0,.5); margin-bottom:44px; }
+.s-reframe h2 em{ font-style:italic; color:var(--accent-hi); }
+.s-reframe .subline{ font-family:var(--font-display); font-style:italic; font-weight:300; font-size:38px; color:rgba(247,243,236,.92); line-height:1.4; text-shadow:0 2px 20px rgba(0,0,0,.55); }
+
+/* ── Jackson S-Dream: artifact frame ──────────────────── */
+.artifact{ display:flex; flex-direction:column; align-items:center; min-width:0; }
+.artifact .art-frame{ padding:11px; background:var(--paper-50); border:1px solid var(--accent); border-radius:2px; }
+.cream .artifact .art-frame{ background:#fdfbf6; border-color:rgba(139,111,53,.55); }
+.artifact img{ display:block; width:100%; height:auto; border-radius:1px; }
+.artifact .cap{ font-family:var(--font-sans); font-weight:500; font-size:15px; letter-spacing:.12em; text-transform:uppercase; margin-top:16px; }
+.night .artifact .cap{ color:rgba(247,243,236,.6); }
+.cream .artifact .cap{ color:var(--accent); }
+
+/* ── Jackson S-Dream I ─────────────────────────────────── */
+.s-dream{ display:flex; padding:var(--pad-y) var(--pad-x); }
+.rowdream{ display:flex; flex-direction:row; align-items:center; gap:80px; width:100%; height:100%; }
+.s-dream .copy{ flex:0 0 520px; display:flex; flex-direction:column; }
+.s-dream .pill{ margin-bottom:42px; }
+.s-dream h2{ font-family:var(--font-display); font-weight:300; font-size:76px; line-height:1.06; margin-bottom:38px; }
+.s-dream h2 em{ font-style:italic; color:var(--accent-hi); }
+.s-dream p{ font-family:var(--font-display); font-weight:300; font-size:30px; line-height:1.5; color:rgba(247,243,236,.82); margin-bottom:34px; }
+.s-dream .arch{ font-family:var(--font-sans); font-weight:500; font-size:19px; letter-spacing:.16em; text-transform:uppercase; color:rgba(247,243,236,.55); }
+.s-dream .art{ flex:1 1 auto; min-width:0; }
+.s-dream .art .art-frame{ width:100%; }
+.s-dream .art img{ width:100%; max-height:820px; object-fit:cover; }
+
+/* ── Jackson S-Dream II ────────────────────────────────── */
+.s-dream2{ display:flex; flex-direction:column; padding:84px var(--pad-x) 118px; }
+.s-dream2 .head{ display:flex; align-items:flex-end; justify-content:space-between; gap:60px; margin-bottom:40px; }
+.s-dream2 .htext{ flex:1 1 auto; min-width:0; }
+.s-dream2 .head .pill{ margin-bottom:26px; }
+.s-dream2 h2{ font-family:var(--font-display); font-weight:300; font-size:60px; line-height:1.0; }
+.s-dream2 h2 em{ font-style:italic; color:var(--accent); }
+.s-dream2 .tags{ flex:0 0 auto; display:flex; gap:14px; padding-bottom:12px; flex-wrap:wrap; justify-content:flex-end; max-width:560px; }
+.s-dream2 .tag{ font-family:var(--font-sans); font-weight:600; font-size:15px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--accent); border:1px solid rgba(139,111,53,.45); border-radius:999px; padding:9px 20px; }
+.s-dream2 .board{ display:flex; gap:34px; flex:1 1 0; min-height:0; align-items:stretch; }
+.s-dream2 .big{ flex:1.5 1 0; display:flex; min-height:0; min-width:0; }
+.s-dream2 .big .art-frame{ display:flex; width:100%; height:100%; min-height:0; }
+.s-dream2 .big img{ height:100%; width:100%; object-fit:cover; }
+.s-dream2 .col{ flex:1 1 0; display:flex; min-height:0; min-width:0; }
+.s-dream2 .col .art-frame{ display:flex; width:100%; height:100%; min-height:0; }
+.s-dream2 .col img{ height:100%; width:100%; object-fit:cover; }
+.s-dream2 .credit{ position:absolute; bottom:54px; right:var(--pad-x); font-family:var(--font-sans);
+  font-weight:500; font-size:15px; letter-spacing:.14em; text-transform:uppercase; color:rgba(13,11,8,.5); }
