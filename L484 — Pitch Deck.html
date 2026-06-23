@@ -526,49 +526,75 @@
     </footer>
   </section>
 
-  <!-- 5·2 — Lab 484: Membership Tiers [DRAFT] — add `hidden` to <section> to exclude from presentation -->
-  <section class="s draft" data-row="5" data-col="2" data-label="Membership Tiers">
-    <div class="draft-stamp">DRAFT</div>
-    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:28px;position:relative;z-index:2;">
-      <div class="anim" style="display:flex;flex-direction:column;gap:14px;">
-        <span class="draft-banner">⚠ Placeholder — fill in tier pricing and access details</span>
-        <div class="label" style="margin-bottom:6px;">Lab 484</div>
+  <!-- 5·2 — Lab 484: Membership Tiers -->
+  <section class="s detail" data-row="5" data-col="2" data-label="Membership Tiers">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:32px;">
+
+      <div class="anim" style="display:flex;flex-direction:column;gap:10px;">
+        <div class="label" style="margin-bottom:6px;">Lab 484 — ArcTec Center</div>
         <div class="h2">Membership tiers.</div>
+        <div class="lead" style="color:var(--text-muted);max-width:640px;">Private health club · Sovereign tech incubator · Co-working hub · 24/7 access</div>
       </div>
-      <div class="anim d1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;">
-        <div class="draft-block">
-          <div class="label" style="margin-bottom:14px;">Tier 1 — Builder</div>
-          <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="font-size:17px;color:var(--text-muted);">Space access</div>
-            <div style="font-size:17px;color:var(--text-muted);">Community network</div>
-            <div style="font-size:17px;color:var(--text-muted);">Event access</div>
+
+      <!-- Pricing cards -->
+      <div class="anim d1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+
+        <div class="glass" style="padding:28px 24px;display:flex;flex-direction:column;gap:16px;">
+          <div class="label">Member</div>
+          <div style="font-size:42px;font-weight:800;color:var(--cyan);font-family:var(--font-mono);line-height:1;">$350<span style="font-size:18px;font-weight:400;color:var(--text-muted);"> / mo</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
+            <div style="font-size:15px;color:var(--text-body);">All 24/7 amenities</div>
+            <div style="font-size:15px;color:var(--text-body);">Exclusive event access</div>
+            <div style="font-size:15px;color:var(--text-body);">Noderunners tech support</div>
+            <div style="font-size:15px;color:var(--text-body);">Kitchen 484 meal passes</div>
+            <div style="font-size:15px;color:var(--text-body);">Upgrade Labs sessions</div>
+            <div style="font-size:15px;color:var(--text-body);">Healing Practitioners access</div>
           </div>
-          <div style="margin-top:20px;font-size:28px;font-weight:700;color:var(--text-faint);font-family:var(--font-mono);">$__ / mo</div>
         </div>
-        <div class="draft-block">
-          <div class="label" style="margin-bottom:14px;">Tier 2 — Full Stack</div>
-          <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="font-size:17px;color:var(--text-muted);">Space + tools + amenities</div>
-            <div style="font-size:17px;color:var(--text-muted);">Kitchen 484 access</div>
-            <div style="font-size:17px;color:var(--text-muted);">Radius Grocery member pricing</div>
-            <div style="font-size:17px;color:var(--text-muted);">Noderunner hardware discounts</div>
+
+        <div class="glass crest" style="padding:28px 24px;display:flex;flex-direction:column;gap:16px;">
+          <div class="label" style="color:var(--cyan);">VIP Member</div>
+          <div style="font-size:42px;font-weight:800;color:var(--cyan);font-family:var(--font-mono);line-height:1;">$550<span style="font-size:18px;font-weight:400;color:var(--text-muted);"> / mo</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
+            <div style="font-size:15px;color:var(--text-body);">Everything in Member</div>
+            <div style="font-size:15px;color:var(--text-muted);font-style:italic;">+ VIP benefits forthcoming</div>
           </div>
-          <div style="margin-top:20px;font-size:28px;font-weight:700;color:var(--text-faint);font-family:var(--font-mono);">$__ / mo</div>
         </div>
-        <div class="draft-block">
-          <div class="label" style="margin-bottom:14px;">Tier 3 — Live-In</div>
-          <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="font-size:17px;color:var(--text-muted);">Full Stack + lodging</div>
-            <div style="font-size:17px;color:var(--text-muted);">Tiny home access</div>
-            <div style="font-size:17px;color:var(--text-muted);">All amenities included</div>
+
+        <div class="glass" style="padding:28px 24px;display:flex;flex-direction:column;gap:16px;">
+          <div class="label">Day Pass</div>
+          <div style="font-size:42px;font-weight:800;color:var(--text-primary);font-family:var(--font-mono);line-height:1;">$50<span style="font-size:18px;font-weight:400;color:var(--text-muted);"> / visit</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
+            <div style="font-size:15px;color:var(--text-body);">Drop-in access</div>
+            <div style="font-size:15px;color:var(--text-body);">Full amenity use</div>
           </div>
-          <div style="margin-top:20px;font-size:28px;font-weight:700;color:var(--text-faint);font-family:var(--font-mono);">$__ / mo</div>
+        </div>
+
+      </div>
+
+      <!-- Amenity grid -->
+      <div class="anim d2" style="display:flex;flex-direction:column;gap:12px;">
+        <div class="label">24/7 Amenities</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px 20px;">
+          <div style="font-size:14px;color:var(--text-muted);">Indoor co-working</div>
+          <div style="font-size:14px;color:var(--text-muted);">Outdoor co-working</div>
+          <div style="font-size:14px;color:var(--text-muted);">Private co-working</div>
+          <div style="font-size:14px;color:var(--text-muted);">Conference room</div>
+          <div style="font-size:14px;color:var(--text-muted);">Outdoor gym</div>
+          <div style="font-size:14px;color:var(--text-muted);">Two cold plunges</div>
+          <div style="font-size:14px;color:var(--text-muted);">Sauna</div>
+          <div style="font-size:14px;color:var(--text-muted);">Sun lounge</div>
+          <div style="font-size:14px;color:var(--text-muted);">Bodyworker studio</div>
+          <div style="font-size:14px;color:var(--text-muted);">Fire pit</div>
+          <div style="font-size:14px;color:var(--text-muted);">BBQ / grills / smokers</div>
+          <div style="font-size:14px;color:var(--text-muted);">Outdoor shower</div>
         </div>
       </div>
+
     </div>
     <footer class="foot">
       <div class="foot__b"><div class="foot__mark"></div><span>Lab 484</span></div>
-      <span class="foot__n">Membership Tiers · 06– [DRAFT]</span>
+      <span class="foot__n">Membership Tiers · 06</span>
     </footer>
   </section>
 
