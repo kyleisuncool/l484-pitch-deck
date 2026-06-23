@@ -329,6 +329,58 @@ footer.foot {
 }
 
 /* ============================================================
+   DRAFT / PLACEHOLDER SLIDES
+   Add `hidden` attribute to <section> to exclude from presentation.
+   ============================================================ */
+.s.draft {
+  background: var(--bg);
+  background-image: radial-gradient(rgba(0,207,255,0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  outline: 2px dashed rgba(0,207,255,0.22);
+  outline-offset: -2px;
+}
+
+.draft-stamp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  font-family: var(--font-mono);
+  font-size: 180px;
+  font-weight: 900;
+  letter-spacing: 0.20em;
+  color: rgba(0,207,255,0.035);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 0;
+  user-select: none;
+}
+
+.draft-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(123,68,217,0.16);
+  border: 1px dashed rgba(123,68,217,0.45);
+  border-radius: var(--r-card);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: rgba(176,120,255,0.85);
+  text-transform: uppercase;
+}
+
+.draft-block {
+  border: 1px dashed rgba(0,207,255,0.22);
+  border-radius: var(--r-card);
+  padding: 24px 28px;
+  background: rgba(0,207,255,0.03);
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
    PLACEHOLDER BADGE
    ============================================================ */
 .forthcoming {
