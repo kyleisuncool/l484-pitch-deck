@@ -654,8 +654,14 @@
               <div style="font-size:19px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">✓</span> Room to grow at every level</div>
             </div>
           </div>
-          <div class="forthcoming" style="padding:20px 28px;border-radius:var(--r-card);font-size:16px;">
-            Revenue breakdown by stream — forthcoming
+          <div class="glass" style="padding:24px 28px;">
+            <div class="label" style="margin-bottom:10px;">Operating Margin</div>
+            <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;">
+              <div class="stat-sm">$3k</div>
+              <div style="font-size:19px;color:var(--text-muted);">net / month</div>
+            </div>
+            <div style="font-size:14px;color:var(--text-faint);font-family:var(--font-mono);letter-spacing:0.06em;">$19k revenue — $16k cost — 6-mo avg</div>
+            <div style="margin-top:12px;font-size:15px;color:var(--text-muted);">Profit Trail → <span style="color:var(--cyan);">detail slide ↓</span></div>
           </div>
         </div>
       </div>
@@ -666,39 +672,91 @@
     </footer>
   </section>
 
-  <!-- 8·1 — Revenue detail (placeholder) -->
-  <section class="s detail" data-row="8" data-col="1" data-label="Revenue Breakdown">
-    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:40px;">
+  <!-- 8·1 — Profit Trail -->
+  <section class="s detail" data-row="8" data-col="1" data-label="Profit Trail">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:32px;">
       <div class="anim">
-        <div class="label" style="margin-bottom:14px;">Deeper Read</div>
-        <div class="h2">Revenue breakdown by stream.</div>
+        <div class="label" style="margin-bottom:12px;">Profit Trail</div>
+        <div class="h2">Traction with a mechanism.</div>
       </div>
-      <div class="anim d1" style="display:flex;flex-direction:column;gap:24px;">
-        <p class="lead" style="max-width:60ch;">A detailed breakdown of revenue by source — membership, hardware, grocery, food service, and sublease — along with the growth path to $150k/month is forthcoming.</p>
-        <div class="glass" style="padding:40px 48px;display:flex;flex-direction:column;gap:28px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--glass-border);">
-            <div style="font-size:22px;font-weight:500;color:var(--text-primary);">Total current MRR</div>
-            <div class="stat-sm">$19,000</div>
+      <div class="anim d1" style="display:flex;flex-direction:column;gap:20px;">
+        <p class="lead" style="max-width:60ch;font-size:22px;">We make $3k/mo today. We know exactly why — and exactly what moves it. The $2.5M raise goes only to what we've already proven works.</p>
+        <div class="grid-2" style="gap:20px;align-items:start;">
+          <!-- Left: current state + ramp arc -->
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div class="glass" style="padding:24px 28px;">
+              <div class="label" style="margin-bottom:12px;">Current State — 6-Month Avg</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;border-bottom:1px solid var(--glass-border);">
+                  <div style="font-size:17px;color:var(--text-muted);">Revenue</div>
+                  <div style="font-size:19px;font-weight:600;color:var(--text-primary);">$18.2k–$19.8k</div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;border-bottom:1px solid var(--glass-border);">
+                  <div style="font-size:17px;color:var(--text-muted);">Cost</div>
+                  <div style="font-size:19px;font-weight:600;color:var(--text-primary);">$15.2k–$16.8k</div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <div style="font-size:17px;color:var(--text-muted);">Net Profit</div>
+                  <div style="font-size:22px;font-weight:700;color:var(--cyan);">$3k/mo</div>
+                </div>
+              </div>
+            </div>
+            <div class="glass" style="padding:20px 28px;">
+              <div class="label" style="margin-bottom:10px;">Post-Investment Ramp</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div style="display:flex;justify-content:space-between;font-size:16px;padding-bottom:8px;border-bottom:1px solid var(--glass-border);">
+                  <span style="color:var(--text-muted);">Month 1</span>
+                  <span style="color:var(--text-primary);">$22k rev → <span style="color:var(--cyan);font-weight:600;">$3k profit</span></span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:16px;">
+                  <span style="color:var(--text-muted);">Month 6</span>
+                  <span style="color:var(--text-primary);">$28k rev → <span style="color:var(--cyan);font-weight:600;">$9k profit</span></span>
+                </div>
+                <div style="font-size:12px;color:var(--text-faint);font-family:var(--font-mono);margin-top:4px;letter-spacing:0.06em;">cost holds ~$19k through ramp</div>
+              </div>
+            </div>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--glass-border);">
-            <div style="font-size:22px;color:var(--text-muted);">Revenue by stream</div>
-            <div class="forthcoming">Detail forthcoming</div>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--glass-border);">
-            <div style="font-size:22px;color:var(--text-muted);">Growth path to $150k/month</div>
-            <div class="forthcoming">Detail forthcoming</div>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <div style="font-size:22px;color:var(--text-muted);">Timeline + milestones</div>
-            <div class="forthcoming">Detail forthcoming</div>
+          <!-- Right: proven levers -->
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div class="glass crest" style="padding:24px 28px;">
+              <div class="label" style="margin-bottom:10px;">Lever 1 — Staffing</div>
+              <div style="font-size:15px;color:var(--text-muted);margin-bottom:12px;">When we added 2 staff last month:</div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;justify-content:space-between;font-size:16px;">
+                  <span style="color:var(--text-muted);">Revenue ↑</span><span style="color:var(--text-primary);">+$2,200/mo</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:16px;">
+                  <span style="color:var(--text-muted);">Cost ↑</span><span style="color:var(--text-primary);">+$900/mo</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:16px;padding-top:8px;border-top:1px solid var(--glass-border);">
+                  <span style="color:var(--text-muted);">Profit ↑</span><span style="color:var(--cyan);font-weight:600;">+$1,300/mo</span>
+                </div>
+              </div>
+              <div style="margin-top:10px;font-size:12px;font-family:var(--font-mono);color:var(--text-faint);letter-spacing:0.06em;">$1.44 profit per $1 invested / mo</div>
+            </div>
+            <div class="glass" style="padding:24px 28px;">
+              <div class="label" style="margin-bottom:10px;">Lever 2 — Inventory</div>
+              <div style="font-size:15px;color:var(--text-muted);margin-bottom:12px;">When we fixed inventory delays:</div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;justify-content:space-between;font-size:16px;">
+                  <span style="color:var(--text-muted);">Revenue recovered</span><span style="color:var(--text-primary);">+$800/mo</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:16px;">
+                  <span style="color:var(--text-muted);">Restock cost</span><span style="color:var(--text-primary);">$200/mo</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:16px;padding-top:8px;border-top:1px solid var(--glass-border);">
+                  <span style="color:var(--text-muted);">Profit ↑</span><span style="color:var(--cyan);font-weight:600;">+$600/mo</span>
+                </div>
+              </div>
+              <div style="margin-top:10px;font-size:12px;font-family:var(--font-mono);color:var(--text-faint);letter-spacing:0.06em;">$3.00 profit per $1 invested / mo</div>
+            </div>
           </div>
         </div>
-        <p style="font-size:18px;color:var(--text-muted);font-style:italic;">Financial detail has been flagged for inclusion. Full breakdown will be added once revenue modeling is complete.</p>
       </div>
     </div>
     <footer class="foot">
       <div class="foot__b"><div class="foot__mark"></div><span>Labs 484</span></div>
-      <span class="foot__n">Revenue Breakdown · 09–</span>
+      <span class="foot__n">Profit Trail · 09–</span>
     </footer>
   </section>
 
@@ -731,8 +789,22 @@
               <div style="font-size:19px;color:var(--text-primary);display:flex;align-items:center;gap:10px;"><span style="color:var(--cyan);">→</span> Quarterly reporting — 24-month ramp</div>
             </div>
           </div>
-          <div class="forthcoming" style="padding:20px 28px;border-radius:var(--r-card);font-size:16px;">
-            Full deal terms + revenue share structure forthcoming
+          <div class="glass" style="padding:20px 28px;">
+            <div class="label" style="margin-bottom:10px;">Use of Funds</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;border-bottom:1px solid var(--glass-border);">
+                <div style="font-size:17px;color:var(--text-primary);">Staffing — 11 → 15 → 20 → 25</div>
+                <div style="font-size:19px;font-weight:700;color:var(--cyan);">$1.2M</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;border-bottom:1px solid var(--glass-border);">
+                <div style="font-size:17px;color:var(--text-primary);">Inventory + space upgrades</div>
+                <div style="font-size:19px;font-weight:700;color:var(--cyan);">$800k</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div style="font-size:17px;color:var(--text-primary);">Working capital reserve</div>
+                <div style="font-size:19px;font-weight:700;color:var(--cyan);">$500k</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -743,38 +815,89 @@
     </footer>
   </section>
 
-  <!-- 9·1 — Investment detail (placeholder) -->
+  <!-- 9·1 — Deal Terms -->
   <section class="s detail" data-row="9" data-col="1" data-label="Deal Terms">
-    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:40px;">
+    <div class="frame" style="display:flex;flex-direction:column;justify-content:center;gap:24px;">
       <div class="anim">
-        <div class="label" style="margin-bottom:14px;">Deeper Read</div>
+        <div class="label" style="margin-bottom:12px;">Deeper Read</div>
         <div class="h2">Full deal structure.</div>
       </div>
-      <div class="anim d1" style="display:flex;flex-direction:column;gap:24px;">
-        <p class="lead" style="max-width:60ch;">Complete deal terms including revenue share percentage, reporting cadence, use-of-funds breakdown, and the 24-month ramp-to-revenue-share structure are forthcoming.</p>
-        <div class="glass" style="padding:40px 48px;display:flex;flex-direction:column;gap:28px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--glass-border);">
-            <div style="font-size:22px;font-weight:500;color:var(--text-primary);">Investment amount</div>
-            <div class="stat-sm">$2.5M</div>
+      <div class="anim d1" style="display:flex;flex-direction:column;gap:18px;">
+        <!-- Term summary row -->
+        <div class="glass" style="padding:24px 32px;display:flex;gap:48px;align-items:center;">
+          <div>
+            <div style="font-size:14px;color:var(--text-faint);font-family:var(--font-mono);letter-spacing:0.08em;margin-bottom:4px;">INVESTMENT</div>
+            <div style="font-size:28px;font-weight:700;color:var(--cyan);">$2.5M</div>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--glass-border);">
-            <div style="font-size:22px;color:var(--text-muted);">Term</div>
-            <div style="font-size:22px;font-weight:600;color:var(--text-primary);">5 years</div>
+          <div>
+            <div style="font-size:14px;color:var(--text-faint);font-family:var(--font-mono);letter-spacing:0.08em;margin-bottom:4px;">TERM</div>
+            <div style="font-size:28px;font-weight:700;color:var(--text-primary);">5 years</div>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--glass-border);">
-            <div style="font-size:22px;color:var(--text-muted);">Revenue share %</div>
-            <div class="forthcoming">Forthcoming</div>
+          <div>
+            <div style="font-size:14px;color:var(--text-faint);font-family:var(--font-mono);letter-spacing:0.08em;margin-bottom:4px;">REPORTING</div>
+            <div style="font-size:28px;font-weight:700;color:var(--text-primary);">Quarterly</div>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--glass-border);">
-            <div style="font-size:22px;color:var(--text-muted);">Use of funds</div>
-            <div class="forthcoming">Forthcoming</div>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <div style="font-size:22px;color:var(--text-muted);">Reporting structure</div>
-            <div style="font-size:22px;font-weight:600;color:var(--text-primary);">Quarterly — 24-mo ramp</div>
+          <div>
+            <div style="font-size:14px;color:var(--text-faint);font-family:var(--font-mono);letter-spacing:0.08em;margin-bottom:4px;">REVENUE SHARE %</div>
+            <div style="font-size:18px;font-weight:600;color:var(--text-muted);font-style:italic;">To be confirmed ↓</div>
           </div>
         </div>
-        <p style="font-size:18px;color:var(--text-muted);font-style:italic;">Contact Labs 484 to receive the full investment brief and schedule a conversation.</p>
+        <!-- Payout timeline -->
+        <div class="glass crest" style="padding:22px 28px;">
+          <div class="label" style="margin-bottom:12px;">Payout Timeline</div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1.4fr 1.8fr;gap:6px;padding-bottom:8px;border-bottom:1px solid var(--glass-border);font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color:var(--text-faint);">
+            <span>MONTH</span><span>PROFIT</span><span>INVESTOR CASH</span><span>WHY</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1.4fr 1.8fr;gap:6px;padding:8px 0;border-bottom:1px solid var(--glass-border);font-size:15px;">
+            <span style="color:var(--text-muted);">0</span>
+            <span style="color:var(--text-primary);">$3k/mo</span>
+            <span style="color:var(--text-primary);">−$2,500,000</span>
+            <span style="color:var(--text-faint);">Funds received</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1.4fr 1.8fr;gap:6px;padding:8px 0;border-bottom:1px solid var(--glass-border);font-size:15px;">
+            <span style="color:var(--text-muted);">1–23</span>
+            <span style="color:var(--text-primary);">$3k → $9k</span>
+            <span style="color:var(--text-muted);">$0</span>
+            <span style="color:var(--text-faint);">All profit reinvested</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1.4fr 1.8fr;gap:6px;padding:8px 0;border-bottom:1px solid var(--glass-border);font-size:15px;">
+            <span style="color:var(--text-muted);">24</span>
+            <span style="color:var(--text-primary);">$9k/mo</span>
+            <span style="color:var(--text-muted);">$0</span>
+            <span style="color:var(--text-faint);">Baseline locked</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1.4fr 1.8fr;gap:6px;padding:8px 0;font-size:15px;">
+            <span style="color:var(--text-primary);font-weight:600;">25+ (Qtly)</span>
+            <span style="color:var(--text-primary);">$9k/mo</span>
+            <span style="color:var(--cyan);font-weight:700;">+$13,500/qtr</span>
+            <span style="color:var(--text-faint);">Revenue share begins</span>
+          </div>
+        </div>
+        <!-- Stress test -->
+        <div class="glass" style="padding:22px 28px;">
+          <div class="label" style="margin-bottom:12px;">Stress Test — What If Growth Is 50% Slower?</div>
+          <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 0.6fr;gap:6px;padding-bottom:8px;border-bottom:1px solid var(--glass-border);font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color:var(--text-faint);">
+            <span>METRIC</span><span>TARGET</span><span>SLOWER</span><span>PAYS?</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 0.6fr;gap:6px;padding:7px 0;border-bottom:1px solid var(--glass-border);font-size:14px;">
+            <span style="color:var(--text-muted);">Month 6 Revenue</span>
+            <span style="color:var(--text-primary);">$28k/mo</span>
+            <span style="color:var(--text-primary);">$24.5k/mo</span>
+            <span style="color:var(--cyan);">✓</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 0.6fr;gap:6px;padding:7px 0;border-bottom:1px solid var(--glass-border);font-size:14px;">
+            <span style="color:var(--text-muted);">Month 6+ Profit</span>
+            <span style="color:var(--text-primary);">$9k/mo</span>
+            <span style="color:var(--text-primary);">$8k/mo</span>
+            <span style="color:var(--cyan);">✓</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 0.6fr;gap:6px;padding:7px 0;font-size:14px;">
+            <span style="color:var(--text-muted);">Quarterly Payout</span>
+            <span style="color:var(--cyan);font-weight:600;">$13,500</span>
+            <span style="color:var(--cyan);font-weight:600;">$12,000</span>
+            <span style="color:var(--cyan);">✓</span>
+          </div>
+        </div>
       </div>
     </div>
     <footer class="foot">
