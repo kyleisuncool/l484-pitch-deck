@@ -333,7 +333,7 @@ footer.foot {
    Add `hidden` attribute to <section> to exclude from presentation.
    ============================================================ */
 .s.draft {
-  background: var(--bg);
+  background-color: var(--void-2);
   background-image: radial-gradient(rgba(0,207,255,0.07) 1px, transparent 1px);
   background-size: 28px 28px;
   outline: 2px dashed rgba(0,207,255,0.22);
