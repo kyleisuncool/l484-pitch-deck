@@ -83,7 +83,7 @@ img { display: block; max-width: 100%; }
   background: var(--void-2);
 }
 
-.s.arctic::before {
+.s.arctec::before {
   content: '';
   position: absolute;
   inset: 0;

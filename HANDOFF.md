@@ -66,7 +66,7 @@ This means you can present top-to-bottom with ↓, and the audience never sees t
 
 | # | Main Slide | Leave-Behind |
 |---|-----------|--------------|
-| 1 | Cover — "Back from the Arctic" | About ArcTec Center |
+| 1 | Cover — The ArcTec | About ArcTec Center |
 | 2 | Where Builders Get Resourced | Developer Ecosystem Deep Dive |
 | 3 | Open Source Dev Center | Why the Physical Layer Matters |
 | 4 | The ArcTec Circle | How the Circle Operates |
@@ -113,7 +113,7 @@ All slide content is in **`L484 — Pitch Deck.html`**.
 Each slide is a `<section>` element. The 2D position is set with two attributes:
 
 ```html
-<section class="s arctic" data-row="0" data-col="0" data-label="Cover">
+<section class="s arctec" data-row="0" data-col="0" data-label="Cover">
   <!-- main slide for row 0 -->
 </section>
 
@@ -131,7 +131,7 @@ Each slide is a `<section>` element. The 2D position is set with two attributes:
 
 | Class | Use |
 |-------|-----|
-| `.s.arctic` | Main presentation slide (dark, subtle aurora glow) |
+| `.s.arctec` | Main presentation slide (dark, subtle aurora glow) |
 | `.s.detail` | Leave-behind slide (cyan left-edge stripe) |
 | `.frame` | Full-bleed content wrapper with standard padding |
 | `.glass` | Glassmorphism card |
@@ -173,7 +173,7 @@ These are known gaps. When the information is ready, edit the relevant sections 
 
 ## Design System Notes
 
-The deck uses the **ArcTec Arctic palette**:
+The deck uses the **ArcTec palette**:
 
 | Token | Value | Role |
 |-------|-------|------|
