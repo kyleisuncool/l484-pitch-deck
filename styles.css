@@ -329,6 +329,15 @@ footer.foot {
 }
 
 /* ============================================================
+   REDACTED / PRIVATE DATA
+   ============================================================ */
+.redacted {
+  filter: blur(6px);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ============================================================
    DRAFT / PLACEHOLDER SLIDES
    Add `hidden` attribute to <section> to exclude from presentation.
    ============================================================ */
