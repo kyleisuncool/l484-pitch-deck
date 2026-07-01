@@ -11,7 +11,6 @@
 //   Home / R                          →  go to row 0, col 0
 //   End                               →  go to last row, col 0
 //   1–9, 0                            →  jump to slide 1–10 (row 0–9), col 0
-//   Shift + 1–4                       →  jump to slide 11–14 (row 10–13), col 0
 
 (function () {
   'use strict';
@@ -253,9 +252,6 @@
       else if (key === 'Home')                             { goTo(0, 0); }
       else if (key === 'End')                              { goTo(grid.length - 1, 0); }
       else if (key === 'r' || key === 'R')                 { goTo(0, 0); }
-      else if (e.shiftKey && /^Digit[1-4]$/.test(e.code)) {
-        goTo(9 + parseInt(e.code.slice(5), 10), 0);
-      }
       else if (/^[0-9]$/.test(key)) {
         const n = key === '0' ? 9 : parseInt(key, 10) - 1;
         goTo(n, 0);
