@@ -10,7 +10,8 @@
 //   Left                              →  return to main (col 0)
 //   Home / R                          →  go to row 0, col 0
 //   End                               →  go to last row, col 0
-//   1–9, 0                            →  jump to that row, col 0
+//   1–9, 0                            →  jump to slide 1–10 (row 0–9), col 0
+//   Shift + 1–4                       →  jump to slide 11–14 (row 10–13), col 0
 
 (function () {
   'use strict';
@@ -32,6 +33,25 @@
   function init() {
     const stage = document.querySelector('deck-stage');
     if (!stage) return;
+
+    // deck-stage's own internal overlay (prev/next/counter/reset, hidden at
+    // opacity:0 until hover) duplicates this file's chevron panel with a
+    // different, linear-index counting model. Suppress it permanently —
+    // deck-stage.js itself is not to be edited, so this reaches into its
+    // open shadow root instead. Retried briefly in case the shadow content
+    // isn't populated yet on first query.
+    function hideInternalOverlay() {
+      const overlay = stage.shadowRoot && stage.shadowRoot.querySelector('.overlay');
+      if (overlay) { overlay.style.setProperty('display', 'none', 'important'); return true; }
+      return false;
+    }
+    if (!hideInternalOverlay()) {
+      let tries = 0;
+      const t = setInterval(() => {
+        tries++;
+        if (hideInternalOverlay() || tries > 20) clearInterval(t);
+      }, 100);
+    }
 
     function buildGrid() {
       const slides = Array.from(stage.children).filter(el => {
@@ -116,6 +136,12 @@
       });
       btn.addEventListener('mousedown', () => { if (!btn.disabled) btn.style.transform = 'scale(0.95)'; });
       btn.addEventListener('mouseup',   () => { if (!btn.disabled) btn.style.transform = 'scale(1.05)'; });
+      btn.addEventListener('focus', () => {
+        if (!btn.disabled) btn.style.boxShadow = '0 0 0 3px rgba(0,207,255,0.55), 0 4px 12px rgba(0,0,0,0.20)';
+      });
+      btn.addEventListener('blur', () => {
+        if (!btn.disabled) btn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.20)';
+      });
       return btn;
     }
 
@@ -227,6 +253,9 @@
       else if (key === 'Home')                             { goTo(0, 0); }
       else if (key === 'End')                              { goTo(grid.length - 1, 0); }
       else if (key === 'r' || key === 'R')                 { goTo(0, 0); }
+      else if (e.shiftKey && /^Digit[1-4]$/.test(e.code)) {
+        goTo(9 + parseInt(e.code.slice(5), 10), 0);
+      }
       else if (/^[0-9]$/.test(key)) {
         const n = key === '0' ? 9 : parseInt(key, 10) - 1;
         goTo(n, 0);

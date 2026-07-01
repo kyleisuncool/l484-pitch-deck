@@ -164,6 +164,7 @@ img { display: block; max-width: 100%; }
   line-height: 1.0;
   letter-spacing: 0.02em;
   color: var(--text-primary);
+  text-wrap: balance;
 }
 
 .h1 {
@@ -174,6 +175,7 @@ img { display: block; max-width: 100%; }
   letter-spacing: -0.01em;
   color: var(--text-primary);
   margin: 0;
+  text-wrap: balance;
 }
 
 .h2 {
@@ -184,6 +186,7 @@ img { display: block; max-width: 100%; }
   letter-spacing: -0.01em;
   color: var(--text-primary);
   margin: 0;
+  text-wrap: balance;
 }
 
 .lead {
@@ -193,6 +196,7 @@ img { display: block; max-width: 100%; }
   line-height: 1.5;
   color: var(--text-body);
   margin: 0;
+  text-wrap: pretty;
 }
 
 .mono {
@@ -459,6 +463,17 @@ footer.foot {
   color: var(--text-body);
   line-height: 1.6;
   margin: 0;
+  text-wrap: pretty;
+}
+
+/* Main-slide speaking-point line: bold headline cue a presenter riffs on
+   live, replacing what used to be a tertiary explanatory sentence.
+   Introduced as an inline pattern across ~24 cards; formalized here so
+   future slides don't reintroduce it as a magic number. */
+.speaking-point {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 /* Arrow / check list item row */
